@@ -1,0 +1,44 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header> -->
+<login-component (loginSuccess)="loadUserInfo($event)" *ngIf="!loginState"></login-component>
+<ng-container *ngIf="loginState">
+    <ion-content style="background-image': 'url(./assets/images/background-1.jpg)'">
+        <h4 text-center color="danger">
+        {{info['Name']}} <button ion-button clear (click)="loginState=false">注销</button>
+    </h4>
+        <ion-searchbar placeholder="搜索课程" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+        <ion-card>
+            <div class="progress-outer">
+                <div class="progress-inner" [style.width]="avgGrade + '%'">
+                    {{avgGrade}}分
+                </div>
+            </div>
+            <ion-card-header>
+                成绩饼图
+            </ion-card-header>
+            <ion-card-content>
+                <canvas #pieCanvas></canvas>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <!-- 理想的状态：应该是把学期/课程名/成绩/绩点/学分 放进一个数组（数据结构）里，好统一操作 -->
+            <ion-card-content *ngFor="let i = index;let item of courseData;">
+                <ion-card-title>
+                    学期: <span>  </span>{{item.semesterId}}期
+                </ion-card-title>
+                <h2>
+                课程名：{{item.courseName}} 
+                </h2>
+                <p>
+                    成绩:{{item.result}}分 绩点：{{item.gpa}} 学分：{{item.credit}}
+                </p>
+                <h3 color="secondary">
+                <!-- 考核方式:{{studentGradeList[i].ScoreSettingStr}} -->
+            </h3>
+            </ion-card-content>
+        </ion-card>
+    </ion-content>
+</ng-container>
