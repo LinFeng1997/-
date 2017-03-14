@@ -1,14 +1,14 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header> -->
 <login-component (loginSuccess)="loadUserInfo($event)" *ngIf="!loginState"></login-component>
 <ng-container *ngIf="loginState">
     <ion-content style="background-image': 'url(./assets/images/background-1.jpg)'">
         <h4 text-center color="danger">
-        {{info['Name']}} <button ion-button clear (click)="loginState=false">注销</button>
+        {{info['Name']}} <!-- <button ion-button clear (click)="loginState=false">注销</button> -->
     </h4>
+        <ion-fab right top>
+            <button ion-fab color="danger" (click)="loginState=false">
+                <ion-icon name="ios-log-out"></ion-icon>
+            </button>
+        </ion-fab>
         <ion-searchbar placeholder="搜索课程" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
         <ion-card>
             <div class="progress-outer">
@@ -24,7 +24,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <!-- 理想的状态：应该是把学期/课程名/成绩/绩点/学分 放进一个数组（数据结构）里，好统一操作 -->
+            <!-- 把学期/课程名/成绩/绩点/学分 放进一个数据结构里，好统一操作 -->
             <ion-card-content *ngFor="let i = index;let item of courseData;">
                 <ion-card-title>
                     学期: <span>  </span>{{item.semesterId}}期

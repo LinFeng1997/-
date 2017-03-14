@@ -2,20 +2,17 @@ import {Injectable} from '@angular/core';
 import {AbstractDataService} from "./abstract.data.service";
 import {AppConfig} from "../app/app.config";
 import {Observable} from "rxjs";
-// import {CarType} from "../entities/CarType";
 import {isUndefined} from "ionic-angular/util/util";
 //import {errorHandler} from "@angular/platform-browser/src/browser";
 
-//import ld from "lodash";
-//
-declare let moment: any;
 
+declare let moment: any;
 
 //import * as PouchDB from 'pouchdb';
 //import 'pouchdb';
 //
 declare var PouchDB: any;
-//let PouchDB = require('pouchdb');//本地数据缓存
+//本地数据缓存
 //declare var PouchDB: any;
 
 /**

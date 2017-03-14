@@ -1,19 +1,18 @@
 login-component {
-  // Fullscreen centered image background
   ion-content {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-color: transparent;
   }
-  .scroll-content {
-    background-image: radial-gradient(center center, ellipse cover, #ffeda3, #ffc800);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+  // .scroll-content {
+  //   background-image: radial-gradient(center center, ellipse cover, #ffeda3, #ffc800);
+  //   display: flex;
+  //   flex-direction: column;
+  //   overflow: hidden;
+  // }
   .logo {
-    width: 50%;
+    width: 180px;
     height: auto;
     margin: 0 auto;
     padding-bottom: 50px;
@@ -42,9 +41,7 @@ login-component {
   }
   .login-button {
     width: 100%;
-    // border-radius: 30px;
     font-size: 0.9em;
-    // border: 1px solid #fff;
     background-color: #39acdc;
   }
   .validate{

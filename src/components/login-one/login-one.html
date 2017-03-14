@@ -1,44 +1,38 @@
 <ion-content padding class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
-  <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-  </ion-header>
-  <div padding>
     <ion-row>
-      <ion-col>
-        <img class="logo" src="./assets/images/logo.png" />
-      </ion-col>
+        <ion-col>
+            <img class="logo" src="./assets/images/logo.png" />
+        </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-list inset class="no-border">
-          <ion-item>
-            <ion-label>学号</ion-label>
-            <ion-input type="text" [(ngModel)]="username"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>密码</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input type="text" placeholder="验证码" [(ngModel)]="validate" clearInput></ion-input>
-          </ion-item>
-          <a class="button validate" (click)="loadLoginValidate()"><img src="{{urpValidateSrc}}" alt=""></a>
-        </ion-list>
-      </ion-col>
+        <ion-col>
+            <ion-list inset class="no-border">
+                <ion-item>
+                    <ion-label>学号</ion-label>
+                    <ion-input type="text" [(ngModel)]="username"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>密码</ion-label>
+                    <ion-input type="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="验证码" [(ngModel)]="validate" clearInput></ion-input>
+                </ion-item>
+                <a class="button validate" (click)="loadLoginValidate()"><img src="{{urpValidateSrc}}" alt=""></a>
+            </ion-list>
+        </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <button ion-button class="login-button" (click)="urpLogin()">登录</button>
-      </ion-col>
+        <ion-col>
+            <button ion-button class="login-button" (click)="urpLogin()">登录</button>
+        </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <div (click)="sb()">
-          <span>想知道这个app里有什么吗？</span>
-          <!-- <a class="button" (click)="loadLoginValidate()"><img src="{{urpValidateSrc}}" alt=""></a> -->
-        </div>
-      </ion-col>
+        <ion-col>
+            <div (click)="sb()">
+                <span>想知道这个app里有什么吗？</span>
+                <!-- <a class="button" (click)="loadLoginValidate()"><img src="{{urpValidateSrc}}" alt=""></a> -->
+            </div>
+        </ion-col>
     </ion-row>
-  </div>
 </ion-content>
