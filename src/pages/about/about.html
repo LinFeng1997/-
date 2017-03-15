@@ -1,1 +1,34 @@
-<component-charts></component-charts>
+<!-- <component-charts></component-charts> -->
+<ion-content padding>
+    <ion-segment [(ngModel)]="howSearch">
+        <ion-segment-button value="模糊搜索">
+            模糊搜索
+        </ion-segment-button>
+        <ion-segment-button value="精确搜索">
+            精确搜索
+        </ion-segment-button>
+    </ion-segment>
+    <ng-container *ngIf="howSearch=='模糊搜索'">
+        <ion-item>
+            <ion-label floating>课程名</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <button ion-button full class="borderRadius20">搜索</button>
+        <ion-item>
+            <ion-label floating>老师名</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <button ion-button full color="danger" class="borderRadius20">搜索</button>
+    </ng-container>
+     <ng-container *ngIf="howSearch=='精确搜索'">
+        <ion-item>
+            <ion-label floating>课程名</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>老师名</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <button ion-button full color="danger" class="borderRadius20">搜索</button>
+    </ng-container>
+</ion-content>
