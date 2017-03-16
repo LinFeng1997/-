@@ -5,7 +5,7 @@
         {{info['Name']}} <!-- <button ion-button clear (click)="loginState=false">注销</button> -->
     </h4>
         <ion-fab right top>
-            <button ion-fab color="danger" (click)="loginState=false">
+            <button ion-fab color="danger" (click)="loginOut()">
                 <ion-icon name="ios-log-out"></ion-icon>
             </button>
         </ion-fab>
@@ -14,6 +14,12 @@
             <div class="progress-outer">
                 <div class="progress-inner" [style.width]="avgGrade + '%'">
                     {{avgGrade}}分
+                </div>
+                <div class="progress-inner red" [style.width]="zAvg + '%'" >
+                    专业课平均分:{{zAvg}}分
+                </div>
+                <div class="progress-inner cornflowerblue" [style.width]="gAvg + '%'">
+                    公共课平均分:{{gAvg}}分
                 </div>
             </div>
             <ion-card-header>
@@ -33,7 +39,7 @@
                 课程名：{{item.courseName}} 
                 </h2>
                 <p>
-                    成绩:{{item.result}}分 绩点：{{item.gpa}} 学分：{{item.credit}}
+                    成绩:{{item.result}}分 绩点：{{item.gpa}} 学分：{{item.credit}} {{item.courseNature}}
                 </p>
                 <h3 color="secondary">
                 <!-- 考核方式:{{studentGradeList[i].ScoreSettingStr}} -->

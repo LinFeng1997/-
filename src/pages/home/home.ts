@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ModalController, LoadingController, ToastController, App } from 'ionic-angular';
+import { ModalController, LoadingController, ToastController, AlertController, Alert } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserService } from "../../providers/user.Service";
 import { UserInfor } from "../../Entities/UserInfor";
@@ -29,15 +29,18 @@ export class HomePage extends AbstractComponent implements OnInit {
 	// 临时存放课程的，用于过滤
 	tmpCourseData: Array<CourseData>;
 	// 平均成绩
-	avgGrade:number = 0;
+	avgGrade: number = 0;
+	gAvg: number = 0;
+	zAvg: number = 0;
 	constructor(public navCtrl: NavController,
 		public modalCtrl: ModalController,
 		protected loadingCtrl: LoadingController,
 		protected toastCtrl: ToastController,
+		protected alertCtrl: AlertController,
 		private userSvc: UserService,
 		protected cfg: AppConfig
 	) {
-		super(cfg, navCtrl, toastCtrl, loadingCtrl);
+		super(cfg, navCtrl, toastCtrl, loadingCtrl, null, alertCtrl);
 	}
 	ngOnInit() {
 		this.userSvc.loadUserData().subscribe(
@@ -56,6 +59,19 @@ export class HomePage extends AbstractComponent implements OnInit {
 		this.loadGrade(this.token);
 	}
 
+	loginOut(): void {
+		//
+		this.confirm('确认信息', '是否确定退出登录？',
+			agree => {
+				if (agree) {
+					this.loginState = false;
+					this.showMessage("退出登录");
+				}
+			}
+		);
+
+	}
+
 	loadGrade(token: string): void {
 		this.userSvc.userUrpGrade(token).subscribe(
 			(r: any) => {
@@ -65,6 +81,7 @@ export class HomePage extends AbstractComponent implements OnInit {
 				}
 				this.courseData = this.handleAjax(r);
 				this.tmpCourseData = this.courseData;
+				this.calEveryAvg(this.courseData);
 				console.log(this.courseData);
 				// 初始化饼图
 				this.pieChart = this.getPieChart();
@@ -83,21 +100,23 @@ export class HomePage extends AbstractComponent implements OnInit {
 		if (val && val.trim() !== '') {
 			this.courseData = this.courseData.filter((e) => {
 				return e.courseName.includes(val);
-			}) 
+			})
 
 		}
 	}
 	// 得到饼图
 	getPieChart() {
+		this.showLoading("Loading...");
 		let data = {
-			labels: ["90分以上","80分-90分", "70分-80分", "60分-70分","60分以下"],
+			labels: ["90分以上", "80分-90分", "70分-80分", "60分-70分", "60分以下"],
 			datasets: [
 				{
 					data: this.handleGrade(),
-					backgroundColor: ["#FFCE56","#FF6384","#36A2EB","#261E47","#516E41"],
-					hoverBackgroundColor: ["#FFCE56","#FF6384","#36A2EB","#261E47","#516E41"]
+					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#516E41"],
+					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#516E41"]
 				}]
 		};
+		this.closeLoading();
 		return this.getChart(this.pieCanvas.nativeElement, "pie", data);
 	}
 	getChart(context, chartType, data, options?) {
@@ -121,12 +140,21 @@ export class HomePage extends AbstractComponent implements OnInit {
 		// });
 		_.forEach(grade.ResultDetailList, (value) => {
 			let cd = new CourseData();
-			cd.semesterId = value.SemesterId;
+			cd.semesterId = value.SemesterId.replace(/(\d{4})[\d]/gi,
+				(match) => {
+					if (match.substring(4) == 1)
+						return match.substring(0, 4) + "秋季学";
+					else if (match.substring(4) == 2)
+						return match.substring(0, 4) + "春季学";
+					else return match;
+				}
+			);;
 			cd.gpa = value.Gpa;
 			cd.credit = value.Credit;
 			cds.push(cd);
 		});
 		cds.forEach((e, index) => {
+			e.courseNature = grade.TeachClassList[index].CourseNature;
 			e.courseName = grade.TeachClassList[index].CourseName;
 			e.result = grade.ResultList[index].Result;
 		});
@@ -158,11 +186,36 @@ export class HomePage extends AbstractComponent implements OnInit {
 				console.log(temp);
 			}
 		});
-		this.avgGrade = +((this.avgGrade/this.courseData.length).toFixed(2));
+		this.avgGrade = +((this.avgGrade / this.courseData.length).toFixed(2));
 
 		// console.log(this.avgGrade);
 		return [excellent, good, common, notBad, bad];
 	}
+
+	calEveryAvg(o): any {
+		let g = 0, z = 0;
+		_.forEach(o, (value) => {
+			switch (value.courseNature) {
+				case "学科基础":
+				case "专业必修":
+				case "专业选修":
+					this.zAvg += parseInt(value.result);
+					z++;
+					break;
+				case "素质选修":
+				case "公共必修":
+					this.gAvg += parseInt(value.result);
+					g++;
+					break;
+				default:
+					// code...
+					break;
+			}
+		});
+		this.zAvg = +(this.zAvg / z).toFixed(2);
+		this.gAvg = +(this.gAvg / g).toFixed(2);
+	}
 }
+
 
 
