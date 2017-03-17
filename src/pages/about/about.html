@@ -9,19 +9,19 @@
         </ion-segment-button>
     </ion-segment>
     <ng-container *ngIf="howSearch=='模糊搜索'">
-        <ion-item>
-            <ion-label floating>课程名</ion-label>
+        <ion-item class="marginTop">
+            <ion-label fixed>课程名</ion-label>
             <ion-input type="text"></ion-input>
         </ion-item>
-        <button ion-button full class="borderRadius20">搜索</button>
-        <ion-item>
-            <ion-label floating>老师名</ion-label>
+        <button ion-button full outline color="light"class="opacityHalf">搜索</button>
+        <ion-item class="marginTop">
+            <ion-label fixed>老师名</ion-label>
             <ion-input type="text"></ion-input>
         </ion-item>
-        <button ion-button full color="danger" class="borderRadius20">搜索</button>
+        <button ion-button full outline color="light" class="opacityHalf">搜索</button>
     </ng-container>
      <ng-container *ngIf="howSearch=='精确搜索'">
-        <ion-item>
+        <ion-item class="marginTop">
             <ion-label floating>课程名</ion-label>
             <ion-input type="text"></ion-input>
         </ion-item>
@@ -29,6 +29,6 @@
             <ion-label floating>老师名</ion-label>
             <ion-input type="text"></ion-input>
         </ion-item>
-        <button ion-button full color="danger" class="borderRadius20">搜索</button>
+        <button ion-button class="right opacityHalf" color="dark" full>搜索</button>
     </ng-container>
 </ion-content>

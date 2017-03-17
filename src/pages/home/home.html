@@ -15,7 +15,7 @@
                 <div class="progress-inner" [style.width]="avgGrade + '%'">
                     {{avgGrade}}分
                 </div>
-                <div class="progress-inner red" [style.width]="zAvg + '%'" >
+                <div class="progress-inner red" [style.width]="zAvg + '%'">
                     专业课平均分:{{zAvg}}分
                 </div>
                 <div class="progress-inner cornflowerblue" [style.width]="gAvg + '%'">
@@ -29,21 +29,27 @@
                 <canvas #pieCanvas></canvas>
             </ion-card-content>
         </ion-card>
-        <ion-card>
+        <ion-card *ngFor="let i = index;let item of courseData;" class="gradeCard">
             <!-- 把学期/课程名/成绩/绩点/学分 放进一个数据结构里，好统一操作 -->
-            <ion-card-content *ngFor="let i = index;let item of courseData;">
-                <ion-card-title>
-                    学期: <span>  </span>{{item.semesterId}}期
+            <ion-card-content >
+                <ion-card-title text-center>
+                    <h3>课程名：{{item.courseName}}</h3>
+                    <h4>学期:{{item.semesterId}}期{{item.courseNature}}</h4>
                 </ion-card-title>
-                <h2>
-                课程名：{{item.courseName}} 
-                </h2>
-                <p>
-                    成绩:{{item.result}}分 绩点：{{item.gpa}} 学分：{{item.credit}} {{item.courseNature}}
-                </p>
-                <h3 color="secondary">
-                <!-- 考核方式:{{studentGradeList[i].ScoreSettingStr}} -->
-            </h3>
+                <ion-row text-center >
+                    <ion-col width-33>
+                        <ion-label>成绩:</ion-label>
+                        <h4>{{item.result}}分</h4>
+                    </ion-col>
+                    <ion-col width-33>
+                        <ion-label>绩点：</ion-label>
+                        <h4>{{item.gpa}}</h4>
+                    </ion-col>
+                    <ion-col width-33>
+                        <ion-label>学分：</ion-label>
+                        <h4>{{item.credit}} </h4>
+                    </ion-col>
+                </ion-row>                
             </ion-card-content>
         </ion-card>
     </ion-content>

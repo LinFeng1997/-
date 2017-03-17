@@ -82,7 +82,7 @@ export class HomePage extends AbstractComponent implements OnInit {
 				this.courseData = this.handleAjax(r);
 				this.tmpCourseData = this.courseData;
 				this.calEveryAvg(this.courseData);
-				console.log(this.courseData);
+				// console.log(this.courseData);
 				// 初始化饼图
 				this.pieChart = this.getPieChart();
 
@@ -112,8 +112,8 @@ export class HomePage extends AbstractComponent implements OnInit {
 			datasets: [
 				{
 					data: this.handleGrade(),
-					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#516E41"],
-					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#516E41"]
+					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#ffffff"],
+					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#ffffff"]
 				}]
 		};
 		this.closeLoading();

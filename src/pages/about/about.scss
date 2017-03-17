@@ -1,13 +1,54 @@
 page-about {
-    ion-segment-button {
-        border: 1px solid;
-        background: rgba(2, 8, 4, 0.61) !important;
+    //适应背景
+    // Input items
+    ion-item {
+        border-radius: 3px !important;
+        padding-left: 10px !important;
+        margin-bottom: 15px !important;
+        color: #fff !important;
+        background-color: rgba(255, 255, 255, .2) !important;
+        font-size: 0.9em;
+        ion-label {
+            color: white !important;
+        }
+    }
+    ::-webkit-input-placeholder {
         color: white !important;
     }
-    ion-segment-button:first-child 	 {
+    .item-inner {
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+    }
+    ion-content {
+        box-shadow: inset 0px -1px 42px 45vmax rgba(0, 0, 0, .7);
+        background: linear-gradient(316deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+        background-size: 1800% 1800%;
+        animation: rainbow 20s linear infinite;
+    }
+    @keyframes rainbow {
+        0% {
+            background-position: 0% 0%
+        }
+        50% {
+            background-position: 100% 100%
+        }
+        100% {
+            background-position: 0% 0%
+        }
+    }
+    .marginTop {
+        margin-top: 80px;
+    }
+    ion-segment-button {
+        border: none;
+        border-color: transparent !important;
+        background: rgba(2, 8, 4, 0.15) !important;
+        color: white !important;
+    }
+    ion-segment-button:first-child {
         border-bottom-left-radius: 35px;
     }
-    ion-segment-button:nth-child(2)  {
+    ion-segment-button:nth-child(2) {
         border-bottom-right-radius: 35px;
     }
 }
