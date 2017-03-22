@@ -1,3 +1,6 @@
+/**
+ * Modify by Blow on 2017-03-06.
+ */
 import {Injectable} from "@angular/core";
 
 /**
@@ -11,7 +14,7 @@ export class AbstractEntity {
     _id:string;
 
     /**
-     * 业务编码
+     * 编码
      */
     code:string;
 

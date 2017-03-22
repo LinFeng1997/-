@@ -1,3 +1,6 @@
+/**
+ * Modify by Blow on 2017-03-30.
+ */
 // import { FormBuilder, FormControl, Validator } from '@angular/forms';
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController, App } from 'ionic-angular';

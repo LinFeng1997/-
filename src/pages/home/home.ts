@@ -1,3 +1,6 @@
+/**
+ * Modify by Blow on 2017-03-26.
+ */
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController, Alert } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';

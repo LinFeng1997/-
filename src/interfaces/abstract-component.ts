@@ -1,3 +1,6 @@
+/**
+ * Modify by Blow on 2017-03-22.
+ */
 import {Injectable, Component, EventEmitter, Input} from '@angular/core';
 import {AppConfig} from "../app/app.config";
 import {Toast} from 'ionic-native';

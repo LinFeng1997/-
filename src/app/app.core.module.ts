@@ -27,6 +27,7 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 
 @NgModule({
 	imports: [CommonModule, FormsModule],//,JsonpModule
+	//管道处理数据
 	declarations: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	exports: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	providers: [

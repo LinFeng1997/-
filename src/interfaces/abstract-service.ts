@@ -1,8 +1,11 @@
-import {Injectable} from '@angular/core';
-import {AbstractDataService} from "./abstract.data.service";
-import {AppConfig} from "../app/app.config";
-import {Observable} from "rxjs";
-import {isUndefined} from "ionic-angular/util/util";
+/**
+ * Modify by Blow on 2017-03-22.
+ */
+import { Injectable } from '@angular/core';
+import { AbstractDataService } from "./abstract.data.service";
+import { AppConfig } from "../app/app.config";
+import { Observable } from "rxjs";
+import { isUndefined } from "ionic-angular/util/util";
 //import {errorHandler} from "@angular/platform-browser/src/browser";
 
 
@@ -38,7 +41,7 @@ export class AbstractService {
 
     //
     constructor(protected dataSvc: AbstractDataService, protected cfg: AppConfig) {
-        
+
         if (AppConfig.debug)
             console.log(`${cfg.config.logTAG}ctox AbstractService Provider`);
     }
@@ -73,7 +76,7 @@ export class AbstractService {
 
 
 
-//#endregion
+    //#endregion
 
 
     //
@@ -102,7 +105,7 @@ export class AbstractService {
 
             if (data == null || data == {}) return;
 
-            d = {_id: key, cacheDate: '', data: [], isArray: false}; //封装数组到包转对象
+            d = { _id: key, cacheDate: '', data: [], isArray: false }; //封装数组到包转对象
 
             //不缓存空对象
             if (Array.isArray(data)) {
@@ -121,14 +124,14 @@ export class AbstractService {
             //
             //放置到缓存
             set = AbstractService.CacheDb().put(d)
-                .then(function (response) {
+                .then(function(response) {
                     if (AppConfig.debug) {
                         if (tp === "modify")
                             console.log(`${me.cfg.config.logTAG}缓存Key:${key}修改插入成功:${JSON.stringify(d)}`);
                         else
                             console.log(`${me.cfg.config.logTAG}第一次插入Key:${key}的缓存:${JSON.stringify(d)}`);
                     }
-                }).catch(function (err) {
+                }).catch(function(err) {
                     if (AppConfig.debug)
                         console.log(`${me.cfg.config.logTAG}添加缓存出错:${JSON.stringify(err)}`);
                 });
@@ -137,11 +140,11 @@ export class AbstractService {
         //
 
         set = AbstractService.CacheDb().get(key)
-            .then(function (doc) {
+            .then(function(doc) {
                 AbstractService.CacheDb().remove(doc);
-            }).then(function (result) {
+            }).then(function(result) {
                 doSet('modify');
-            }).catch(function (err) {
+            }).catch(function(err) {
                 doSet('add');
             });
 
@@ -207,7 +210,7 @@ export class AbstractService {
     }
 
     /**
-     * 获取缓存中的数据
+     * 获取缓存中的数据(异步)
      * @param key
      * @returns {Observable<T>}
      */
@@ -268,7 +271,7 @@ export class AbstractService {
     }
 
     /**
-     * 删除缓存
+     * 删除缓存(异步)
      * @param key
      */
     async deleteCache(key: string) {
@@ -348,25 +351,25 @@ export class AbstractService {
             //
             this.getCacheAsync(key)
                 .then(
-                    datas => {
-                        subscriber.next(datas);
-                    }
+                datas => {
+                    subscriber.next(datas);
+                }
                 )
                 .catch(
-                    er => {
-                        //如果没有数据则，延迟一下执行。要不然可能会和之前的删除冲突
-                        setTimeout(() => {
-                            //进行查询
-                            query.subscribe(
-                                sts => {
-                                    subscriber.next(sts);
-                                },
-                                er => {
-                                    subscriber.error(er);
-                                }
-                            );
-                        }, 150);
-                    }
+                er => {
+                    //如果没有数据则，延迟一下执行。要不然可能会和之前的删除冲突
+                    setTimeout(() => {
+                        //进行查询
+                        query.subscribe(
+                            sts => {
+                                subscriber.next(sts);
+                            },
+                            er => {
+                                subscriber.error(er);
+                            }
+                        );
+                    }, 150);
+                }
                 );
         });
 
@@ -374,6 +377,6 @@ export class AbstractService {
     }
 
     //#endregion
-    
+
 
 }

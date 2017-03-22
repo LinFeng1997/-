@@ -9,7 +9,7 @@ import {AppConfig} from "../../app/app.config";
  http数据服务
  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
  for more info on providers and Angular 2 DI.
- * Modified by Hamlet on 2016-11-03
+ * Modified by Blow on 2017-03-22
  */
 @Injectable()
 export class HttpDataService extends AbstractDataService {
@@ -34,7 +34,7 @@ export class HttpDataService extends AbstractDataService {
 
         if (AppConfig.debug)
             console.log(`${this.cfg.config.logTAG}in HttpDataService getData method`);
-
+        //Todo:多个url选择性传参
         let url = this.getApiUrl(cmd);
 
         var opts = this.ensureGetOptions(data); //获取包含认证信息的头文件
@@ -46,7 +46,9 @@ export class HttpDataService extends AbstractDataService {
         return res;
 
     }
-
+     /**
+     * put数据
+     */
     putData(cmd: string, data: any, head?: any): Observable<any> {
         if (AppConfig.debug)
             console.log(`${this.cfg.config.logTAG}in HttpDataService putData method`);
@@ -63,7 +65,7 @@ export class HttpDataService extends AbstractDataService {
     }
 
     /**
-     *
+     * post数据
      * @param cmd
      * @param data
      * @param head
@@ -76,17 +78,15 @@ export class HttpDataService extends AbstractDataService {
 
         let url = this.getApiUrl(cmd);
 
-       // var opts = this.ensureGetOptions(null); //获取包含认证信息的头文件
+        // var opts = this.ensureGetOptions(null); //获取包含认证信息的头文件
         var opts = this.ensureHeaderOptions(head); //获取包含认证信息的头文件
-        var dt;
+        var dt = data;
 
-        // //json化
+        //json化
         // if (jsonData==null || jsonData==true)
         //     dt = JSON.stringify(data)
         // else
-            dt = data;
-
-
+        // dt = data;
         var res = this.http.post(url, dt, opts)
             .map(this.extractData)
             .catch(this.handleError);

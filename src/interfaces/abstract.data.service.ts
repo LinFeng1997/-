@@ -18,7 +18,7 @@ export abstract class AbstractDataService implements iDataService {
 
     protected Config: AppConfig;
 
-    //
+    //构造配置文件
     constructor(protected cfg: AppConfig) {
 
         this.Config = cfg;
@@ -46,9 +46,10 @@ export abstract class AbstractDataService implements iDataService {
     //#region 参数处理
 
     /**
-     *
+     * 包装成查询字符串
      * @param data
-     * @returns {any}
+     * @returns params:URLSearchParams
+     https://www.angular.cn/docs/ts/latest/api/http/index/URLSearchParams-class.html
      */
     warpToQueryString(data: any): URLSearchParams {
         if (data == null)
@@ -66,14 +67,12 @@ export abstract class AbstractDataService implements iDataService {
     }
 
     /**
-     * 确保请求头。可能用于认证信息  //Todo:urp的浏览器端跨域还是个问题
+     * 确保非Get请求头。可能用于认证信息  //Todo:urp的浏览器端跨域还是个问题
+     * @param header
      * @returns {Headers}
      */
     ensureHeaderOptions(header: any): RequestOptions {
         var headers;
-
-        ////application/json
-        //application/x-www-form-urlencoded
         headers = new Headers(
             {
                 'Content-Type': 'application/json',
@@ -103,18 +102,16 @@ export abstract class AbstractDataService implements iDataService {
 
     /**
      * 确保请求头。可能用于认证信息
+     * @param data
      * @returns {Headers}
      */
     ensureGetOptions(data: any): RequestOptions {
         let headers = new Headers(
             {
                 'Content-Type': 'application/json',
-                // 'Request-Token': this.cfg.config.deviceId,
-                // 'Baidu-PushKey': this.cfg.config.baiduPushChannelId,
                 "Authorization":`Bearer ${this.cfg.config.urpToken}`,
                 "Access-Control-Allow-Origin": "*",
                 "proxyUrl": "http://202.203.209.96"
-                // "Origin:http":'202.203.209.96'
             });
 
 
@@ -133,8 +130,8 @@ export abstract class AbstractDataService implements iDataService {
     //#endregion
     /**
      * 获取默认api调用连接
-     * @param res
-     * @returns {any|{}}
+     * @param cmd 子url
+     * @returns {any|{}} 完整url
      */
     protected getApiUrl(cmd: string) {
 
@@ -146,7 +143,7 @@ export abstract class AbstractDataService implements iDataService {
 
     /**
      * 数据萃取
-     * @param res
+     * @param res 服务器的响应
      * @returns {从响应获取 json 对象|{}}
      * @remark 注意不同服务器的返回值拆包可能各有不同。
      */
@@ -179,20 +176,17 @@ export abstract class AbstractDataService implements iDataService {
             error.message = '无法访问网络，请检察您的网络连接后重试！';
             //alert('无法访问网络，请检察您的网络连接后重试！');
         }
-
         //先输出调试
         try {
             if (AppConfig.debug)
                 console.log(error);
         }
         catch (ex) {
-
             console.log(ex);
         }
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : '服务器访问出错';
-        
-
+       
         //严重的空返回错误会导致这里无法解析
         try {
             jsonDesc = error.json();
@@ -203,9 +197,6 @@ export abstract class AbstractDataService implements iDataService {
             errorDesc.message = errMsg;
             console.log(ex);
         }
-        // console.log("jsonDesc");
-        // console.log(jsonDesc);
-        //
         if (jsonDesc != null) {
 
             errorDesc.status = error.status;
@@ -216,7 +207,7 @@ export abstract class AbstractDataService implements iDataService {
             else
                 errorDesc.message = errMsg;
 
-            //
+            //从错误实体里取出详细信息描述
             if (jsonDesc.error != null )
                 errorDesc.error = jsonDesc.error;
             if (jsonDesc.error_description != null )
@@ -226,10 +217,9 @@ export abstract class AbstractDataService implements iDataService {
 
             errorDesc.date = jsonDesc.date;
             console.log("errdes");
-            console.log(jsonDesc.error_description);
-            console.log(errorDesc.error_description);
+            // console.log(jsonDesc.error_description);
+            // console.log(errorDesc.error_description);
         }
-
 
         console.log(`ionic:error:${errMsg} 来自AbstractDataService的handleError`); // log to console instead
 
@@ -237,6 +227,5 @@ export abstract class AbstractDataService implements iDataService {
     }
 
     //#endregion
-
 
 }

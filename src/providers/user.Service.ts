@@ -21,9 +21,7 @@ export class UserService extends AbstractService {
     }
 
     /**
-     * 用户登录
-     * @param userName
-     * @param password
+     * 获取urp验证码
      * @returns {Observable<any>}
      */
     userUrpValidate(): Observable<any> {
@@ -32,14 +30,25 @@ export class UserService extends AbstractService {
         console.log(res);
         return res;
     }
-
+    /**
+     * urp用户登录
+     * @param validate 验证码
+     * @param temp     服务器端返回的临时变量
+     * @param userName 用户名
+     * @param password 密码
+     * @returns {Observable<any>}
+     */
     userUrpLogin(validate: string, temp: string, username: string, password: string): Observable<any> {
         var n = `grant_type=password&username=${username}&password=${password}%7C${validate}*${temp}&client_id=ynumisSite`;
         var res = this.dataSvc.postData(`v5api/OAuth/Token`, n)
         console.log(res);
         return res;
     }
-
+     /**
+     * urp用户成绩
+     * @param token urp授权令牌
+     * @returns {Observable<any>}
+     */
     userUrpGrade(token: string): Observable<any> {
         this.cfg.config.urpToken = token;
         console.log(this.cfg.config.urpToken);
@@ -50,7 +59,6 @@ export class UserService extends AbstractService {
 
     static user: Array<UserInfor> = [
         new UserInfor('', '', 0, '', 0, false),
-        // {id:"",name:"",similar:0,className:"",grade:0,status:false}
     ];
 
     /**
