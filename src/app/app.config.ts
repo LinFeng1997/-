@@ -68,7 +68,7 @@ export class AppConfig {
          * 本机测试
          */
         //测试地址
-        //webBaseUrl: "http://git.ynpay.cc:20000/v1",
+
         //正式地址
         webBaseUrl: "http://202.203.209.96/",
         //urp的token

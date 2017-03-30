@@ -1,16 +1,15 @@
 /**
  * Modify by Blow on 2017-03-22.
  */
-import {Injectable, Component, EventEmitter, Input} from '@angular/core';
-import {AppConfig} from "../app/app.config";
-import {Toast} from 'ionic-native';
+import { Injectable, Component, EventEmitter, Input } from '@angular/core';
+import { AppConfig } from "../app/app.config";
+import { Toast } from 'ionic-native';
 import {
     AlertController, Alert, ToastController, NavController, LoadingController, Loading, ModalController, Modal,
     PopoverController, Popover, ActionSheetController, NavParams
 } from "ionic-angular";
 
 declare let cordova: any;
-
 
 //
 declare let _: any;
@@ -27,7 +26,9 @@ export class AbstractComponent {
 
 
     //#region 基本属性
-
+    /**
+     * Loading动画
+     */
     private _loader: Loading;
 
     /**
@@ -61,18 +62,18 @@ export class AbstractComponent {
 
     //
     constructor(protected cfg: AppConfig, protected navCtrl?: NavController,
-                protected toastCtrl?: ToastController,
-                protected loadingCtrl?: LoadingController,
-                protected modalCtrl?: ModalController,
-                protected alertCtrl?: AlertController,
-                protected popCtrl?: PopoverController,
-                protected actionCtrl?: ActionSheetController,
-                protected navParams?: NavParams) {
+        protected toastCtrl?: ToastController,
+        protected loadingCtrl?: LoadingController,
+        protected modalCtrl?: ModalController,
+        protected alertCtrl?: AlertController,
+        protected popCtrl?: PopoverController,
+        protected actionCtrl?: ActionSheetController,
+        protected navParams?: NavParams) {
 
         if (AppConfig.debug)
             console.log(`${cfg.config.logTAG}ctox Abstract Component Provider`);
 
-        //参数提取
+        //参数提取，标题，返回按钮，确定按钮
         if (navParams != null) {
             //
             let pp = navParams.get('title');
@@ -96,7 +97,11 @@ export class AbstractComponent {
     //#region 显示信息窗口
 
     /**
-     *
+     * 显示上滑列表
+     * @param title 列表标题
+     * @param items 列表数组
+     * @param act 列表方法
+     * @param cancleAct 关闭行为
      */
     showActionSheet(title: string, items: string[], act: (s: string) => void, cancleAct?: () => void) {
 
@@ -182,10 +187,10 @@ export class AbstractComponent {
 
                 Toast.show(msg, timeout.toString(), position)
                     .subscribe(
-                        toast => {
-                            if (AppConfig.debug)
-                                console.log(`${this.cfg.config.logTAG}真机Toast:${toast}`);
-                        }
+                    toast => {
+                        if (AppConfig.debug)
+                            console.log(`${this.cfg.config.logTAG}真机Toast:${toast}`);
+                    }
                     );
             }
         }
@@ -193,9 +198,9 @@ export class AbstractComponent {
 
     /**
      * 显示弹出模态框
-     * @param content
-     * @param params
-     * @param opts
+     * @param content    组件
+     * @param params     传递的参数
+     * @param opts    其他参数
      */
     showModal(content: Component, params?: any, opts?: any): Modal {
 
@@ -218,9 +223,9 @@ export class AbstractComponent {
 
     /**
      * 显示弹出Popover
-     * @param content
-     * @param params
-     * @param showHeight AppConfig.popParam.showHeight
+     * @param content    组件
+     * @param params    传递的参数
+     * @param showHeight AppConfig.popParam.showHeight    黑框大小
      */
     showPopover(content: Component, params?: any, showHeight: string = AppConfig.popParam.showHeight.百分之六十): Popover {
 
@@ -267,7 +272,7 @@ export class AbstractComponent {
 
 
         //减低显示效果
-        if(!this.needDemotionEffect()) {
+        if (!this.needDemotionEffect()) {
             this._loader = this.loadingCtrl.create({
                 spinner: spinner,
                 content: msg,
@@ -376,10 +381,10 @@ export class AbstractComponent {
      * @param num
      * @returns {number[]}
      */
-    protected createRange(num:number){
+    protected createRange(num: number) {
         var items: number[] = [];
 
-        for(var i = 1; i <= num; i++){
+        for (var i = 1; i <= num; i++) {
             items.push(i);
         }
         return items;
@@ -390,15 +395,14 @@ export class AbstractComponent {
      * @param element
      * @param action
      */
-    playAnimate(elementId:string,action:string):void
-    {
-        if(elementId==null || action==null)
+    playAnimate(elementId: string, action: string): void {
+        if (elementId == null || action == null)
             return;
 
         //
         $(`#${elementId}`).removeClass()
             .addClass(`animated ${action}`)
-            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
                 $(this).removeClass();
             });
     }
@@ -477,13 +481,13 @@ export class AbstractComponent {
         let me = this;
 
         //
-        bro.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function (e) {
+        bro.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
             me.showMessage('打开外部链接出错~');
             bro.close();
         });
 
         //
-        bro.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function (e) {
+        bro.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
             if (AppConfig.debug)
                 console.log(`${me.cfg.config.logTAG}发现警告信息:${e}`);
         });

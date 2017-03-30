@@ -51,4 +51,16 @@ page-about {
     ion-segment-button:nth-child(2) {
         border-bottom-right-radius: 35px;
     }
+    // 提示行
+    ion-row {
+        align-items: center;
+        text-align: center;
+        span {
+            color: white;
+        }
+    }
+    .beautySpan {
+        color: aquamarine;
+        font-size: 1.5rem;
+    }
 }

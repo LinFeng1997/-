@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-// import { Promise } from 'es6-promise';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs";
 import { AbstractService } from "../interfaces/abstract-service";
-import { UserInfor } from "../Entities/UserInfor";
-import { CourseData } from "../Entities/CourseData";
+import { UserInfor } from "../entities/UserInfor";
 //import {HttpDataService} from "./httpData.service";
 import { AbstractDataService } from "../interfaces/abstract.data.service";
 import { AppConfig } from "../app/app.config";
