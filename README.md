@@ -1,22 +1,23 @@
-Ionic 2 App Base
+一个基于ionic2的跨平台客户端
 云南大学成绩分析客户端
 =====================
 
-This is the base template for Ionic 2 starter apps.
 
-## Using this project
+## 启动这个项目
 
-You'll need the Ionic CLI with support for v2 apps:
+环境：node
+
+###ionic安装
 
 ```bash
 $ npm install -g ionic
 ```
 
-Then run:
+###运行
 
 ```bash
 $ ionic start myApp
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/docs/v2/getting-started/) page.
+欢迎一起学习探讨ionic2、Angular2、Typescript、node等方面的知识...
 
