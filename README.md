@@ -7,13 +7,13 @@
 
 环境：node
 
-###ionic安装
+### ionic安装
 
 ```bash
 $ npm install -g ionic
 ```
 
-###运行
+### 运行
 
 ```bash
 $ ionic start myApp
