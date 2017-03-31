@@ -11,12 +11,10 @@ import { isUndefined } from "ionic-angular/util/util";
 
 declare let moment: any;
 
-//import * as PouchDB from 'pouchdb';
-//import 'pouchdb';
-//
-declare var PouchDB: any;
 //本地数据缓存
-//declare var PouchDB: any;
+
+declare var PouchDB: any;
+
 
 /**
  *  抽象服务，包含了基本的服务方法定义
@@ -46,36 +44,6 @@ export class AbstractService {
             console.log(`${cfg.config.logTAG}ctox AbstractService Provider`);
     }
 
-    //
-    private mkRslt(arr) {
-        var arrRslt = [''];
-        for (var i = 0, len = arr.length; i < len; i++) {
-            var str = arr[i];
-            var strlen = str.length;
-            if (strlen == 1) {
-                for (var k = 0; k < arrRslt.length; k++) {
-                    arrRslt[k] += str;
-                }
-            } else {
-                var tmpArr = arrRslt.slice(0);
-                arrRslt = [];
-                for (k = 0; k < strlen; k++) {
-                    //复制一个相同的arrRslt   
-                    var tmp = tmpArr.slice(0);
-                    //把当前字符str[k]添加到每个元素末尾   
-                    for (var j = 0; j < tmp.length; j++) {
-                        tmp[j] += str.charAt(k);
-                    }
-                    //把复制并修改后的数组连接到arrRslt上   
-                    arrRslt = arrRslt.concat(tmp);
-                }
-            }
-        }
-        return arrRslt;
-    }
-
-
-
     //#endregion
 
 
@@ -84,8 +52,8 @@ export class AbstractService {
 
     /**
      * 添加数据到缓存，如果指定的键已存在，则覆盖。
-     * @param key
-     * @param data
+     * @param key    键
+     * @param data    数据
      * @param expireTime number 过期时间（分钟）
      * @returns {Observable<T>}
      */
@@ -94,18 +62,19 @@ export class AbstractService {
         var set;
         let me = this;
         data._id = key;
-
+        console.log(data._id);
+        // 过期
         if (expireTime == null || isUndefined(expireTime))
             expireTime = 0;
 
-        //添加缓存操作
+        //添加缓存操作，默认是add
         let doSet = (tp: string = 'add') => {
 
             var d;
 
             if (data == null || data == {}) return;
-
-            d = { _id: key, cacheDate: '', data: [], isArray: false }; //封装数组到包转对象
+        //封装数组到包转对象
+            d = { _id: key, cacheDate: '', data: [], isArray: false }; 
 
             //不缓存空对象
             if (Array.isArray(data)) {
@@ -150,61 +119,6 @@ export class AbstractService {
 
         //
         let act = Observable.fromPromise(set);
-
-        return act;
-    }
-
-    /**
-     * 获取缓存中的数据
-     * @param key
-     * @returns {Observable<T>}
-     */
-    getCache(key: string, autoRefresh?: boolean): Observable<any> {
-        let me = this;
-
-        if (autoRefresh == null || isUndefined(autoRefresh))
-            autoRefresh = true;
-
-        var set = AbstractService.CacheDb().get(key)
-
-        let act = Observable
-            .fromPromise(set)
-            .map(d => {
-                //拆包
-                if (d == null)
-                    return null;
-
-                //判断是否存在缓存时间控制。
-                if (!isUndefined(d['expireTime']) && d['expireTime'] != null) {
-                    let exp = d['expireTime'];
-                    let cacheDate = d['cacheDate'];
-                    //需要过期判断
-                    if (autoRefresh === true && exp > 0) {
-
-
-                        //  let oldDate =
-                        //
-                        let currffSet = moment().valueOf();
-
-                        let offSet = (currffSet - cacheDate) / 60000;
-                        if (AppConfig.debug)
-                            console.log('offset:' + offSet);
-
-                        //
-                        if (offSet > exp) {
-                            me.deleteCache(key);//缓存已过期
-                            return null;
-                        }
-                    }
-                }
-
-                //
-                let lst = d['data'];
-                if (d['isArray'] && d['isArray'] == true)
-                    return lst;
-
-                return lst[0];
-            });
 
         return act;
     }

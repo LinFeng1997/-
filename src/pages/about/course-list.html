@@ -7,13 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center>课程列表</ion-title>
+      <ion-searchbar placeholder="搜索课程名" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-searchbar placeholder="搜索课程名" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+
 	<button ion-item (click)="selectCourse(item)" *ngFor="let item of courseList" >{{item}}</button>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="80px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多课程中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

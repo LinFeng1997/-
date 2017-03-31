@@ -30,8 +30,9 @@ export class AboutPage extends AbstractComponent implements OnInit {
 	ngOnInit() {
 		console.log('Hello');
 	}
+	// 这里数据量太大，还需要优化,用户下拉刷新?
 	searchCourse(): any {
-		this.showLoading('正在加载数据，请稍后...', 0, true);
+		this.showLoading('正在加载数据，请稍后...', 0, false);
 		let courseModal = this.modalCtrl.create(CourseListPage);
 		courseModal.onDidDismiss((data: any) => {
 			if (data === null || data === undefined) return;

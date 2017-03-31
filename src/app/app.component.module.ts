@@ -7,6 +7,7 @@ import { TeacherListPage  } from '../pages/about/teacher-list';
 
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { RecommandPage} from '../pages/recommand/recommand';
 
 import { LoginComponent } from '../components/login-one/login-one';
 import { ChartsComponent } from '../components/charts/charts';
@@ -24,9 +25,11 @@ export const AppComponents: any = [
 	CourseListPage,
 	TeacherListPage,
 	ContactPage,
+	RecommandPage,
 	HomePage,
 	LoginComponent,
 	ChartsComponent,
+
 	// EchartsComponent
 ]
 

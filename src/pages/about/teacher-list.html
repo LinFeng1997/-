@@ -6,10 +6,16 @@
 -->
 <ion-header>
     <ion-navbar>
-        <ion-title>教师名单</ion-title>
+        <ion-searchbar placeholder="搜索你亲爱的老师" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-	<ion-searchbar placeholder="搜索你亲爱的老师" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+	
     <button ion-item (click)="selectTeacher(item)" *ngFor="let item of teacherList">{{item}}</button>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="100px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多教师中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

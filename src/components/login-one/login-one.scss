@@ -39,10 +39,14 @@ login-component {
     margin: 0;
   }
   .login-button {
-    width: 100%;
+    width: 90%;
     font-size: 0.9em;
-    background-color: #39acdc;
+    background-color: #90ce1b;
   }
+  // .login-button:active,.button-md:active{
+  //   background-color: #8bbb36 !important;
+
+  // }
   .validate{
     position: absolute;
     top: 67%;

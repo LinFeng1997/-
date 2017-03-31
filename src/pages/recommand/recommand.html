@@ -1,0 +1,19 @@
+<!--
+  Generated template for the Recommand page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>recommand</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-input type="text" placeholder="缓存值" [(ngModel)]="testValue" clearInput></ion-input>
+    <button ion-button full (click)="addToCache(testValue)">增加缓存</button>
+    <button ion-button full (click)="getCache()">获取缓存</button>
+    <ion-input type="text" placeholder="删除缓存值" [(ngModel)]="testDeletedValue" clearInput></ion-input>
+    <button ion-button full (click)="deleteCache(testDeletedValue)">删除缓存</button>
+    <button ion-button full (click)="clearCache()">清空缓存</button>
+</ion-content>

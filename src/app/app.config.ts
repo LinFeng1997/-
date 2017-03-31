@@ -209,8 +209,11 @@ export class AppConfig {
     /**
      * 缓存键值
      */
-    static cacheKeys = {
-
+    cacheKeys = {
+        username:"urp用户名",
+        password:"密码",
+        //课程成绩的对象
+        //推荐课程的对象
     };
 
     /**
