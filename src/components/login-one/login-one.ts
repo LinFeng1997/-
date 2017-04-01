@@ -3,10 +3,10 @@
  */
 // import { FormBuilder, FormControl, Validator } from '@angular/forms';
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { ModalController, LoadingController, ToastController, AlertController, App } from 'ionic-angular';
+import { ModalController, LoadingController, ToastController, AlertController} from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserService } from "../../providers/user.Service";
-import { UserInfor } from "../../Entities/UserInfor";
+// import { UserInfor } from "../../Entities/UserInfor";
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 

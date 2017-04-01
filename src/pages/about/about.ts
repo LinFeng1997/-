@@ -1,7 +1,7 @@
 /**
  * Modify by Blow on 2017-03-30.
  */
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";

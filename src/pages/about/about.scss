@@ -1,6 +1,6 @@
 page-about {
     //适应背景
-    // Input items
+    // 表单输入框
     ion-item {
         border-radius: 3px !important;
         padding-left: 10px !important;
@@ -8,8 +8,15 @@ page-about {
         color: #fff !important;
         background-color: rgba(255, 255, 255, .2) !important;
         font-size: 0.9em;
+        // 表单标签样式
         ion-label {
             color: white !important;
+        }
+        ion-label[fixed] {
+            -webkit-flex: 0 0 50px !important;
+            flex: 0 0 50px !important;
+            width: 50px !important;
+            min-width: 50px !important;
         }
     }
     ::-webkit-input-placeholder {
@@ -19,6 +26,7 @@ page-about {
         border-bottom: 0 !important;
         box-shadow: none !important;
     }
+    // 背景彩虹七色渐变
     ion-content {
         box-shadow: inset 0px -1px 42px 45vmax rgba(0, 0, 0, .7);
         background: linear-gradient(316deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);

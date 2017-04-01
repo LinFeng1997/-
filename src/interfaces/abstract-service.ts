@@ -62,7 +62,7 @@ export class AbstractService {
         var set;
         let me = this;
         data._id = key;
-        console.log(data._id);
+        // console.log(data._id);
         // 过期
         if (expireTime == null || isUndefined(expireTime))
             expireTime = 0;
@@ -71,18 +71,23 @@ export class AbstractService {
         let doSet = (tp: string = 'add') => {
 
             var d;
+            // console.log("data:")
+            // console.log(data)
 
             if (data == null || data == {}) return;
-        //封装数组到包转对象
-            d = { _id: key, cacheDate: '', data: [], isArray: false }; 
+            //封装数组到包转对象
+            d = { _id: key, cacheDate: '', data: [], isArray: false };
 
             //不缓存空对象
             if (Array.isArray(data)) {
+                console.log("是数组啦！")
                 if (data.length === 0) return;
                 d.data = data;
                 d.isArray = true;
             }
             else {
+                console.log("不是数组啦！")
+
                 d.data.push(data);
                 d.isArray = false;
             }
@@ -202,21 +207,6 @@ export class AbstractService {
                 if (AppConfig.debug)
                     console.log(`${me.cfg.config.logTAG}cache key:${key} delete success`);
             }
-
-            /*
-             .then(function (doc) {
-             AbstractService.CacheDb().remove(doc);
-             if (AppConfig.debug)
-             console.log(`${me.cfg.config.logTAG}cache key:${key} delete success`);
-             }).catch(function (err) {
-             if (AppConfig.debug)
-             console.log(`${me.cfg.config.logTAG}cache key:${key} delete fail`);
-             });
-
-
-             var doc =  db.get('mydoc');
-             var response = await db.remove(doc);
-             */
 
         } catch (err) {
 
