@@ -6,7 +6,7 @@ import { ModalController, LoadingController, ToastController } from 'ionic-angul
 import { NavController, NavParams } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
-import { CourseListPage } from '../about/course-list';
+import { AboutListPage } from '../about/about-list';
 import { TeacherListPage } from '../about/teacher-list';
 
 
@@ -30,25 +30,15 @@ export class AboutPage extends AbstractComponent implements OnInit {
 	ngOnInit() {
 		console.log('Hello');
 	}
-	// 这里数据量太大，还需要优化,用户下拉刷新?
-	searchCourse(): any {
+	// 这里数据量太大，优化---先操作数据再操作dom
+	searchItem(value): any {
 		this.showLoading('正在加载数据，请稍后...', 0, false);
-		let courseModal = this.modalCtrl.create(CourseListPage);
+		let courseModal = this.modalCtrl.create(AboutListPage,{listType:value});
 		courseModal.onDidDismiss((data: any) => {
 			if (data === null || data === undefined) return;
 			this.course = data;
 		});
 		courseModal.present();
-		this.closeLoading();
-	}
-	searchTeacher(): any {
-		this.showLoading('正在加载数据，请稍后...', 0, true);
-		let teacherModal = this.modalCtrl.create(TeacherListPage);
-		teacherModal.onDidDismiss((data: any) => {
-			if (data === null || data === undefined) return;
-			this.teacher = data;
-		});
-		teacherModal.present();
 		this.closeLoading();
 	}
 }
