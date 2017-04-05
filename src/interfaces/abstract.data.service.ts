@@ -76,7 +76,7 @@ export abstract class AbstractDataService implements iDataService {
         headers = new Headers(
             {
                 'Content-Type': 'application/json',
-                // 'client_id': " ",
+                "Authorization":`Bearer ${this.cfg.config.urpToken}`,
                 "Access-Control-Allow-Origin": "*",
                 "proxyUrl": "http://202.203.209.96"
 

@@ -5,7 +5,11 @@ import { AboutPage } from '../pages/about/about';
 import { AboutListPage  } from '../pages/about/about-list';
 
 import { ContactPage } from '../pages/contact/contact';
+
 import { HomePage } from '../pages/home/home';
+import { ChooseCoursePage } from '../pages/home/choose-course';
+
+
 import { RecommandPage} from '../pages/recommand/recommand';
 
 import { LoginComponent } from '../components/login-one/login-one';
@@ -26,6 +30,8 @@ export const AppComponents: any = [
 	ContactPage,
 	RecommandPage,
 	HomePage,
+	ChooseCoursePage,
+
 	LoginComponent,
 	ChartsComponent,
 	ItemListComponent

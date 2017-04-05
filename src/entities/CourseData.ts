@@ -4,7 +4,7 @@
 /*
  成绩信息
  */
-export class CourseData {
+export class CourseData{
 
 	semesterId: string;
 

@@ -21,3 +21,8 @@ $ ionic start myApp
 
 欢迎一起学习探讨ionic2、Angular2、Typescript、node等方面的知识...
 
+## License
+
+Copyright 2017 许云峰
+
+转载请注明出处。

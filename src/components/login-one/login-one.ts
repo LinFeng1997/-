@@ -20,7 +20,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
   // public backgroundImage = `./assets/images/login-back${this.loginBack}.png`;
   public backgroundImage = `./assets/images/login-back7.png`;
   username: string = "20141120083";
-  password: string = "";
+  password: string = "*x*y*fblow444";
   validate: string = "";
   temp: string = "";
   urpValidateSrc: string = '';
@@ -89,7 +89,8 @@ export class LoginComponent extends AbstractComponent implements OnInit {
     this.loadLoginValidate();
   }
   sb():any{
-        this.showMessage('就不告诉你！');
+        // this.showMessage('就不告诉你！');
+        this.navCtrl.push('ChooseCourse');
   }
   loadBackImg(): any {
     setInterval(() => {

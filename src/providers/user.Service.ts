@@ -23,8 +23,8 @@ export class UserService extends AbstractService {
      * @returns {Observable<any>}
      */
     userUrpValidate(): Observable<any> {
-        // var data = peopleId;
-        var res = this.dataSvc.getData('v5api/api/GetLoginCaptchaInfo/d172a5d9-8df0-4983-91a3-db6bb47855bc', null);
+        // let data = peopleId;
+        let res = this.dataSvc.getData('v5api/api/GetLoginCaptchaInfo/d172a5d9-8df0-4983-91a3-db6bb47855bc', null);
         console.log(res);
         return res;
     }
@@ -37,23 +37,47 @@ export class UserService extends AbstractService {
      * @returns {Observable<any>}
      */
     userUrpLogin(validate: string, temp: string, username: string, password: string): Observable<any> {
-        var n = `grant_type=password&username=${username}&password=${password}%7C${validate}*${temp}&client_id=ynumisSite`;
-        var res = this.dataSvc.postData(`v5api/OAuth/Token`, n)
+        let n = `grant_type=password&username=${username}&password=${password}%7C${validate}*${temp}&client_id=ynumisSite`;
+        let res = this.dataSvc.postData(`v5api/OAuth/Token`, n)
         console.log(res);
         return res;
     }
-     /**
-     * urp用户成绩
-     * @param token urp授权令牌
-     * @returns {Observable<any>}
-     */
+    /**
+    * urp用户成绩
+    * @param token urp授权令牌
+    * @returns {Observable<any>}
+    */
     userUrpGrade(token: string): Observable<any> {
         this.cfg.config.urpToken = token;
         console.log(this.cfg.config.urpToken);
-        var res = this.dataSvc.getData('v5api/api/Result', null);
+        let res = this.dataSvc.getData('v5api/api/Result', null);
         console.log(res);
         return res;
     }
+
+
+    /**
+     * 获取选课验证码
+     * @returns {Observable<any>}
+     */
+    userChooseCourseValidate(): Observable<any> {
+        let res = this.dataSvc.getData('v5api/api/xk/Captcha', null);
+        console.log(res);
+        return res;
+    }
+
+    /**
+     * 选课
+     * @param courseNumber 课程代码 validate 选课验证码
+     * @returns {Observable<any>}
+     */
+    userChooseCourse(courseNumber, validate): Observable<any> {
+        let n = { id: courseNumber, captcha: validate };
+        let res = this.dataSvc.postData(`v5api/api/xk/addDirect`, n)
+        console.log(res);
+        return res;
+    }
+
 
     static user: Array<UserInfor> = [
         new UserInfor('', '', 0, '', 0, false),
