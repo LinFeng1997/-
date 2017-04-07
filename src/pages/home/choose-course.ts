@@ -53,6 +53,10 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 		},
 			er => {
 				this.showMessage('获取验证码失败');
+				if (er.status === 401) {
+					this.navCtrl.pop();
+					this.showMessage('请重新登录', 'middle');
+				}
 				console.log(er);
 			})
 	}
@@ -61,7 +65,8 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 		this.userSvc.userChooseCourse(this.model[0].courseNumber, this.validate).subscribe(u => {
 			console.log(u);
 		}, er => {
-			this.showMessage('选课失败');
+			this.showMessage('选课失败' + er.message);
+
 			console.log(er);
 		})
 	}

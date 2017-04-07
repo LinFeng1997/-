@@ -5,6 +5,8 @@ import { IonicErrorHandler } from "ionic-angular";
 
 //配置服务
 import { AppConfig } from './app.config';
+import { AppVersion } from '@ionic-native/app-version';
+import { Device } from '@ionic-native/device';
 
 
 //数据服务
@@ -33,8 +35,10 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 	exports: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	providers: [
 		AppConfig,
+		AppVersion,
 		HttpDataService,
 		AbstractService,
+		Device,
 		{ provide: AbstractDataService, useExisting: HttpDataService },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		UserService,

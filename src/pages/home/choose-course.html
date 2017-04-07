@@ -8,22 +8,32 @@
         <ion-list-header text-center>
             我的选课篮
         </ion-list-header>
-        <ion-input type="text" value="" placeholder="2017000001" #todoText></ion-input>
+        <!-- 这里可能要做输入验证 -->
+        <ion-input type="text" value="" placeholder="在这里输入选课代码" clear #todoText></ion-input>
         <button ion-button (click)="addItem(todoText.value)" full>
             添加选课代码
         </button>
     </ion-list>
     <ion-row>
-        <ion-col width-75>
+        <ion-col width-50>
             课程代码
+        </ion-col>
+        <ion-col width-25>
+            选一门
         </ion-col>
         <ion-col width-25>
             删除
         </ion-col>
     </ion-row>
     <ion-row *ngFor="let item of getToChooseCourse();let i =index ">
-        <ion-col width-75>
+        <ion-col width-50>
             <!-- {{i + 1}} -->{{item.courseNumber}}
+        </ion-col>
+        <ion-col width-25>
+            <!-- 按钮颜色可能要随机获取哦~ -->
+            <button ion-button (click)="getValidate()" icon-only>
+                <ion-icon name="ios-add-circle"></ion-icon>
+            </button>
         </ion-col>
         <ion-col width-25>
             <ion-toggle [(ngModel)]="item.done" checked="false"></ion-toggle>
@@ -34,12 +44,14 @@
             <span *ngSwitchDefault>No</span>
         </ion-col> -->
     </ion-row>
-    <button ion-button (click)="getValidate()" full>
+    <!--  <button ion-button (click)="getValidate()" full >
         获取选课验证码
-    </button>
-    <img src="http://202.203.209.96/vimgs/{{validate}}.png" alt="" *ngIf="validate">
-    <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCode"></ion-input>
-    <button ion-button (click)="chooseSingleCourse()" full>
-        选一门课
-    </button>
+    </button> -->
+    <ng-container *ngIf="validate">
+        <img src="http://202.203.209.96/vimgs/{{validate}}.png" alt="" *ngIf="validate">
+        <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCode"></ion-input>
+        <button ion-button (click)="chooseSingleCourse()" full>
+            确认选择
+        </button>
+    </ng-container>
 </ion-content>
