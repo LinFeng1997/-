@@ -55,7 +55,7 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 				this.showMessage('获取验证码失败');
 				if (er.status === 401) {
 					this.navCtrl.pop();
-					this.showMessage('请重新登录', 'middle');
+					this.showMessage('登录失效,请重新登录', 'middle');
 				}
 				console.log(er);
 			})

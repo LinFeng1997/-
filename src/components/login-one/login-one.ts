@@ -20,8 +20,8 @@ export class LoginComponent extends AbstractComponent implements OnInit {
   public loginForm: any;
   // public backgroundImage = `./assets/images/login-back${this.loginBack}.png`;
   public backgroundImage = `./assets/images/login-back7.png`;
-  username: string = "20141120083";
-  password: string = "*x*y*fblow444";
+  username: string = "";
+  password: string = "";
   validate: string = "";
   temp: string = "";
   urpValidateSrc: string = '';
@@ -37,6 +37,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
     super(cfg, navCtrl, toastCtrl, loadingCtrl);
   }
   ngOnInit() {
+    this.getCache();
     // this.loadBackImg();
     this.loadLoginValidate();
     this.userSvc.loadUserData().subscribe(u => {
@@ -76,7 +77,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
         this.emitLogin(r);
         this.showMessage('登录成功！');
         //存储账号密码为缓存  
-        this.addToCache(this.username,this.password);
+        this.addToCache(this.username, this.password);
       },
       er => {
         this.closeLoading();
@@ -109,7 +110,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
     // console.log(info);
   }
   //将用户名和密码存储进缓存之中
-  addToCache(username, password) {
+  addToCache(username, password): any {
     let usernameCache = this.cfg.cacheKeys.username;
     this.cacheService.addCache(usernameCache,
       {
@@ -122,4 +123,33 @@ export class LoginComponent extends AbstractComponent implements OnInit {
       });
     console.log("插入对象")
   }
+  //获取缓存,总觉得这里还需要封装，//Todo:把用户名、密码、token封装进一个对象里
+  getCache(): any {
+    let cacheKey = this.cfg.cacheKeys.username;
+    try {
+      this.cacheService.getCacheAsync(cacheKey)
+        .then(v => {
+            this.username = v.username;
+        })
+        .catch(er => {
+          console.log("错误");
+        });
+    } catch (e) {
+      console.log(`成绩有毒的缓存${cacheKey}获取失败!`);
+    }
+    cacheKey = this.cfg.cacheKeys.password;
+    try {
+      this.cacheService.getCacheAsync(cacheKey)
+        .then(v => {
+            this.password = v.password;
+        })
+        .catch(er => {
+          console.log("错误");
+        });
+    } catch (e) {
+      console.log(`成绩有毒的缓存${cacheKey}获取失败!`);
+    }
+  }
 }
+
+
