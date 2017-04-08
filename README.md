@@ -16,7 +16,7 @@ $ npm install -g ionic
 ### 运行
 
 ```bash
-$ ionic start myApp
+$ ionic serve
 ```
 
 欢迎一起学习探讨ionic2、Angular2、Typescript、node等方面的知识...
