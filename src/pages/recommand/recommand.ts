@@ -8,6 +8,7 @@ import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
 
+declare let window: any;
 @Component({
 	selector: 'page-recommand',
 	templateUrl: 'recommand.html'
@@ -82,4 +83,107 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	clearCache(key) {
 		this.cacheService.clearCache();
 	}
+
+	simpleAjax() {
+		//创建异步对象
+		let xhr = this.ajax();
+		xhr.onreadystatechange = function() {
+			//可以通信
+			if (xhr.onreadystatechange == 4 && xhr.status == 200) {
+				this.setContainer('Original Ajax:' + xhr.responseText);
+			}
+		}
+		xhr.open('get', 'https://www.baidu.com', true);
+		console.log(xhr);
+		//设置请求头
+		// xhr.setRequestHeader();
+		xhr.send();
+	}
+
+	ajax() {
+		//初始化异步对象
+		let xhr = null;
+		try {
+			xhr = new XMLHttpRequest();
+		}
+		//处理初始化异常
+		catch (e) {
+			// IE
+			console.log('IE内核');
+			// try {
+			// 	xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			// } catch (e) {
+			// 	try {
+			// 		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			// 	} catch (e) {
+			// 		xhr = null;
+			// 	}
+			// }
+		}
+		return xhr;
+	}
+
+	addScriptTag(src) {
+		var script = document.createElement('script');
+		script.setAttribute("type", "text/javascript");
+		script.src = src;
+		document.body.appendChild(script);
+	}
+
+	jsonp() {
+		this.addScriptTag('http://202.203.209.96/v5api/api/GetLoginCaptchaInfo/d172a5d9-8df0-4983-91a3-db6bb47855bc?callback=foo');
+		var foo = function(data) {
+			// 格式不正确啊
+			console.log(JSON.stringify(data));
+
+		};
+
+	};
+
+
+
+	eventDelegation(item) {
+		// var list = document.getElementById("myLinks");
+		this.addHandler(item, "click", (event) => {
+			//先获取事件
+			event = this.getEvent(event);
+			// console.log(event);
+			// 再获取触发的对象
+			var target = this.getTarget(event);
+			console.log(target.parentNode.id);
+			// 根据条件做事情
+			switch (target.parentNode.id) {
+				case "doSomething":
+					alert("1");
+					break;
+				case "goSomewhere":
+					alert("2");
+					break;
+				case "sayHi":
+					alert("3");
+					break;
+			}
+		});
+
+	}
+	// 自定义事件
+
+	addHandler(element, type, handler) {
+		if (element.addEventListener) {
+			element.addEventListener(type, handler, false);
+		} else if (element.attachEvent) {
+			element.attachEvent("on" + type, handler);
+		} else {
+			element["on" + type] = handler;
+		}
+	}
+
+	getEvent(event) {
+		return event ? event : window.event;
+	}
+
+	getTarget(event) {
+		return event.target || event.srcElement;
+	}
+
 }

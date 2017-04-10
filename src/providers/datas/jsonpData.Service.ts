@@ -8,7 +8,6 @@ import { AppConfig } from "../../app/app.config";
  http数据服务
  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
  for more info on providers and Angular 2 DI.
- * Modified by Hamlet on 2016-11-03
  */
 @Injectable()
 export class JsonpDataService extends AbstractDataService {

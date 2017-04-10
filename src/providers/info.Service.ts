@@ -10,7 +10,7 @@ import { AppConfig } from "../app/app.config";
  */
 @Injectable()
 export class InfoService extends AbstractService {
-
+	//Todo:异步数据返回改造
 	constructor(private dataService: AbstractDataService, cfg: AppConfig) {
 		super(dataService, cfg); // constructors in derived classes must call super()
 	}

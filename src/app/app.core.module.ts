@@ -33,6 +33,7 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 	//管道处理数据
 	declarations: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	exports: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
+	// 服务
 	providers: [
 		AppConfig,
 		AppVersion,

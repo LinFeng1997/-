@@ -18,4 +18,11 @@
     <ion-input type="text" placeholder="删除缓存值" [(ngModel)]="testDeletedValue" clearInput></ion-input>
     <button ion-button full (click)="deleteCache(testDeletedValue)">删除缓存</button>
     <button ion-button full (click)="clearCache()">清空缓存</button>
+    <button ion-button full (click)="simpleAjax()">原生ajax</button>
+    <button ion-button full (click)="jsonp()">jsonp</button>
+    <ion-row id="myLinks" #myLinks (click)="eventDelegation(myLinks)">
+        <button ion-button full id="doSomewhere">事件委托1</button>
+        <button ion-button full id="goSomething">事件委托2</button>
+        <button ion-button full id="sayHi">事件委托3</button>
+    </ion-row>
 </ion-content>
