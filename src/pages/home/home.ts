@@ -1,5 +1,5 @@
 /**
- * Modify by Blow on 2017-03-26.
+ * Created by Blow on 2017-03-06.
  */
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController } from 'ionic-angular';
@@ -115,8 +115,8 @@ export class HomePage extends AbstractComponent implements OnInit {
 			datasets: [
 				{
 					data: this.handleGrade(),
-					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#ffffff"],
-					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#ffffff"]
+					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#000"],
+					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#000"]
 				}]
 		};
 		this.closeLoading();

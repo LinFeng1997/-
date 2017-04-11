@@ -9,7 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AppConfig } from './app.config';
 import { AbstractService } from "../interfaces/abstract-service";
 import { AbstractComponent } from '../interfaces/abstract-component';
-
+//Todo:获取用户登录的token并且存储到缓存中
 @Component({
   templateUrl: 'app.html'
 })

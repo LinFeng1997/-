@@ -49,7 +49,7 @@ export abstract class AbstractDataService implements iDataService {
      * 包装成查询字符串
      * @param data
      * @returns params:URLSearchParams
-     https://www.angular.cn/docs/ts/latest/api/http/index/URLSearchParams-class.html
+     * https://www.angular.cn/docs/ts/latest/api/http/index/URLSearchParams-class.html
      */
     warpToQueryString(data: any): URLSearchParams {
         if (data == null)

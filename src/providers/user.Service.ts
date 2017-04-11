@@ -3,10 +3,8 @@ import 'rxjs/add/operator/map';
 import { Observable } from "rxjs";
 import { AbstractService } from "../interfaces/abstract-service";
 import { UserInfor } from "../entities/UserInfor";
-//import {HttpDataService} from "./httpData.service";
 import { AbstractDataService } from "../interfaces/abstract.data.service";
 import { AppConfig } from "../app/app.config";
-// import { AppRouter, ActionLinks } from '../app/app.routes.module';
 /*
 用户服务
  */
@@ -23,9 +21,14 @@ export class UserService extends AbstractService {
      * @returns {Observable<any>}
      */
     userUrpValidate(): Observable<any> {
-        // let data = peopleId;
+        //交换临时url和基础url
+        // [this.cfg.config.webBaseUrl,this.cfg.config.webTmpUrl]=[this.cfg.config.webTmpUrl,this.cfg.config.webBaseUrl];
+        // console.log(this.cfg.config.webBaseUrl);
         let res = this.dataSvc.getData('v5api/api/GetLoginCaptchaInfo/d172a5d9-8df0-4983-91a3-db6bb47855bc', null);
         console.log(res);
+        //交换回去临时url和基础url
+        // [this.cfg.config.webBaseUrl,this.cfg.config.webTmpUrl]=[this.cfg.config.webTmpUrl,this.cfg.config.webBaseUrl];
+        // console.log(this.cfg.config.webBaseUrl);
         return res;
     }
     /**

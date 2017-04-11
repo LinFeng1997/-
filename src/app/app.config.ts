@@ -1,5 +1,5 @@
 /**
- * Created by Blow on 2017-03-06.
+ * Modifyd by Blow on 2017-03-06.
  */
 import { Injectable } from '@angular/core';
 
@@ -44,7 +44,7 @@ export class AppConfig {
 
 
     /**
-     *
+     *其他配置参数
      */
     config = {
         /**
@@ -67,8 +67,8 @@ export class AppConfig {
         /**
          * 本机测试
          */
-        //测试地址
-
+        //临时地址
+        webTmpUrl: "http://www.baidu.com/",
         //正式地址
         webBaseUrl: "http://202.203.209.96/",
         //urp的token
@@ -212,8 +212,8 @@ export class AppConfig {
     cacheKeys = {
         username:"urp用户名",
         password:"密码",
-        //课程成绩的对象
-        //推荐课程的对象
+        //Todo:课程成绩的对象
+        //Todo:推荐课程的对象
     };
 
     /**

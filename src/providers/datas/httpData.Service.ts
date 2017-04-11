@@ -29,6 +29,9 @@ export class HttpDataService extends AbstractDataService {
 
     /**
      * 获取数据
+     * @param cmd 拼接的url
+     * @param data  携带的报文数据
+     * @return Observable<any>
      */
     getData(cmd: string, data: any): Observable<any> {
 
@@ -46,8 +49,13 @@ export class HttpDataService extends AbstractDataService {
         return res;
 
     }
-     /**
+     
+    /**
      * put数据
+     * @param cmd 拼接的url
+     * @param data  携带的报文数据
+     * @param head  携带的报文头
+     * @return Observable<any>
      */
     putData(cmd: string, data: any, head?: any): Observable<any> {
         if (AppConfig.debug)
@@ -66,11 +74,11 @@ export class HttpDataService extends AbstractDataService {
 
     /**
      * post数据
-     * @param cmd
-     * @param data
-     * @param head
-     * @param jsonData
-     * @returns {Observable<R>}
+     * @param cmd 拼接的url
+     * @param data  携带的报文数据
+     * @param head  携带的报文头
+     * @param josnData  是否是json格式
+     * @return Observable<any>
      */
     postData(cmd: string, data: any, head?: any, jsonData?: boolean): Observable<any> {
         if (AppConfig.debug)
@@ -94,11 +102,11 @@ export class HttpDataService extends AbstractDataService {
         return res;
     }
 
-    /**
-     *
-     * @param cmd
-     * @param data
-     * @returns {Observable<R>}
+     /**
+     * delete数据
+     * @param cmd 拼接的url
+     * @param data  携带的报文数据
+     * @return Observable<any>
      */
     deleteData(cmd: string, data: any): Observable<any> {
         if (AppConfig.debug)

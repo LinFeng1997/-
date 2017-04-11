@@ -11,10 +11,10 @@ import {
 
 declare let cordova: any;
 
-//
+//lodash
 declare let _: any;
 
-//
+//jquery
 declare let $: any;
 
 /*
@@ -365,7 +365,7 @@ export class AbstractComponent {
     //#region 视图辅助
 
     /**
-     * 是否需要减低特性登记
+     * 是否需要减低特性登记，对魅族特殊对待
      * @returns {boolean}
      */
     needDemotionEffect(): boolean {
@@ -391,6 +391,7 @@ export class AbstractComponent {
     }
 
     /**
+     * //Info:这里可能需要替换成angular的动画模块
      * 为指定元素播放, animate动画
      * @param element
      * @param action
