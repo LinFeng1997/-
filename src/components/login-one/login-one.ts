@@ -111,37 +111,23 @@ export class LoginComponent extends AbstractComponent implements OnInit {
   }
   //将用户名和密码存储进缓存之中
   addToCache(username, password): any {
-    let usernameCache = this.cfg.cacheKeys.username;
+    let usernameCache = this.cfg.cacheKeys.user;
     this.cacheService.addCache(usernameCache,
       {
-        username: username
+        username: username,
+        password: password,
+        token : this.cfg.config.urpToken
       });
-    let passCache = this.cfg.cacheKeys.password;
-    this.cacheService.addCache(passCache,
-      {
-        password: password
-      });
-    console.log("插入对象")
   }
-  //获取缓存,总觉得这里还需要封装，//Todo:把用户名、密码、token封装进一个对象里
+  //获取缓存,封装把用户名、密码、token封装进一个对象里
   getCache(): any {
-    let cacheKey = this.cfg.cacheKeys.username;
+    let cacheKey = this.cfg.cacheKeys.user;
     try {
       this.cacheService.getCacheAsync(cacheKey)
         .then(v => {
             this.username = v.username;
-        })
-        .catch(er => {
-          console.log("错误");
-        });
-    } catch (e) {
-      console.log(`成绩有毒的缓存${cacheKey}获取失败!`);
-    }
-    cacheKey = this.cfg.cacheKeys.password;
-    try {
-      this.cacheService.getCacheAsync(cacheKey)
-        .then(v => {
             this.password = v.password;
+            this.cfg.config.urpToken = v.token;
         })
         .catch(er => {
           console.log("错误");

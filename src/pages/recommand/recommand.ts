@@ -30,13 +30,13 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	}
 	// 根据不同情况增加缓存，课程那个可能是个数组，一直push啊push啊
 	addToCache(value) {
-		let cacheKey = this.cfg.cacheKeys.username;
+		let cacheKey = this.cfg.cacheKeys.user;
 
 		// 加入缓存,每次都会覆盖
 		// 键值对系列(单值)
 		this.cacheService.addCache(cacheKey,
 			{
-				username: value,
+				user: value,
 			});
 		console.log("插入对象")
 

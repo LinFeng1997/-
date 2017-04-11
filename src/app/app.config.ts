@@ -210,7 +210,7 @@ export class AppConfig {
      * 缓存键值
      */
     cacheKeys = {
-        username:"urp用户名",
+        user:"urp用户",
         password:"密码",
         //Todo:课程成绩的对象
         //Todo:推荐课程的对象
