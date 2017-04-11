@@ -19,6 +19,8 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 	validate: any;
 	// 选课验证码
 	validateCode: any;
+	// 课程代码
+	courseId:string;
 	constructor(public navCtrl: NavController,
 		public modalCtrl: ModalController,
 		protected loadingCtrl: LoadingController,
@@ -44,9 +46,11 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 		if (newItem != "") {
 			this.model.push(new CourseModel(newItem, false));
 		}
+		console.log(this.model);
 	}
 
-	getValidate(): any {
+	getValidate(course): any {
+		this.courseId = course;
 		this.userSvc.userChooseCourseValidate().subscribe((u) => {
 			this.validate = u;
 			// this.showPopover();
@@ -61,8 +65,9 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 			})
 	}
 
-	chooseSingleCourse(): any {
-		this.userSvc.userChooseCourse(this.model[0].courseNumber, this.validate).subscribe(u => {
+	chooseSingleCourse(course): any {
+
+		this.userSvc.userChooseCourse(course, this.validate).subscribe(u => {
 			console.log(u);
 		}, er => {
 			this.showMessage('选课失败' + er.message);

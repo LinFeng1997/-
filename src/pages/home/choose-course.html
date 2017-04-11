@@ -9,7 +9,7 @@
             我的选课篮
         </ion-list-header>
         <!-- 这里可能要做输入验证 -->
-        <ion-input type="text" value="" placeholder="在这里输入选课代码" clear #todoText></ion-input>
+        <ion-input type="number" value="" placeholder="在这里输入10位选课代码" clear #todoText ></ion-input>
         <button ion-button (click)="addItem(todoText.value)" full>
             添加选课代码
         </button>
@@ -31,7 +31,7 @@
         </ion-col>
         <ion-col width-25>
             <!-- 按钮颜色可能要随机获取哦~ -->
-            <button ion-button (click)="getValidate()" icon-only clear class="top17">
+            <button ion-button (click)="getValidate(item.courseNumber)" icon-only clear class="top17">
                 <ion-icon name="ios-add-circle"></ion-icon>
             </button>
         </ion-col>
@@ -39,18 +39,15 @@
             <ion-toggle [(ngModel)]="item.done" checked="false"></ion-toggle>
             <!-- <input type="checkbox" [(ngModel)]="item.done" /> -->
         </ion-col>
-        <!--   <ion-col width-25 [ngSwitch]="item.done">
-            <span *ngSwitchCase="true">Yes</span>
-            <span *ngSwitchDefault>No</span>
-        </ion-col> -->
     </ion-row>
     <!--  <button ion-button (click)="getValidate()" full >
         获取选课验证码
     </button> -->
     <ng-container *ngIf="validate">
-        <img src="http://202.203.209.96/vimgs/{{validate}}.png" alt="" *ngIf="validate">
+        <ion-title text-center>课程代码为{{courseId}}的验证码：</ion-title>
+        <img src="http://202.203.209.96/vimgs/{{validate}}.png" alt="" *ngIf="validate" class="width100">
         <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCode"></ion-input>
-        <button ion-button (click)="chooseSingleCourse()" full>
+        <button ion-button (click)="chooseSingleCourse(courseId)" full>
             确认选择
         </button>
     </ng-container>
