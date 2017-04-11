@@ -33,8 +33,12 @@ export class HomePage extends AbstractComponent implements OnInit {
 	tmpCourseData: Array<CourseData>;
 	// 平均成绩
 	avgGrade: number = 0;
+	// 公共平均分
 	gAvg: number = 0;
+	// 专业平均分
 	zAvg: number = 0;
+	// 加权平均分
+	jAvg: number = 0;
 	constructor(public navCtrl: NavController,
 		public modalCtrl: ModalController,
 		protected loadingCtrl: LoadingController,
@@ -196,8 +200,11 @@ export class HomePage extends AbstractComponent implements OnInit {
 	}
 
 	calEveryAvg(o): any {
-		let g = 0, z = 0;
+		let g = 0, z = 0 , j = 0;
+		console.log(o);
 		_.forEach(o, (value) => {
+			this.jAvg += parseInt(value.result)*parseInt(value.credit);
+			j+=parseInt(value.credit);
 			switch (value.courseNature) {
 				case "学科基础":
 				case "专业必修":
@@ -217,6 +224,12 @@ export class HomePage extends AbstractComponent implements OnInit {
 		});
 		this.zAvg = +(this.zAvg / z).toFixed(2);
 		this.gAvg = +(this.gAvg / g).toFixed(2);
+		this.jAvg = +(this.jAvg / j).toFixed(2);
+		// console.log(this.jAvg);
+	}
+
+	calWeightedAvg(c):any{
+
 	}
 }
 

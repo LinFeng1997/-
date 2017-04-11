@@ -13,7 +13,10 @@
         <ion-card>
             <div class="progress-outer">
                 <div class="progress-inner" [style.width]="avgGrade + '%'">
-                    {{avgGrade}}分
+                    平均{{avgGrade}}分
+                </div>
+                <div class="progress-inner myYellow" [style.width]="jAvg + '%'">
+                    加权平均{{jAvg}}分
                 </div>
                 <div class="progress-inner red" [style.width]="zAvg + '%'">
                     专业课平均分:{{zAvg}}分
