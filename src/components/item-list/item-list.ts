@@ -40,7 +40,7 @@ export class ItemListComponent extends AbstractComponent implements OnInit {
       throw e;
     }
   }
-  selectitem(item) {
+  selectItem(item) {
     this.viewCtrl.dismiss(item);
   }
 

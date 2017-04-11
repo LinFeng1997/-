@@ -1,5 +1,10 @@
 <login-component (loginSuccess)="loadUserInfo($event)" *ngIf="!loginState"></login-component>
 <ng-container *ngIf="loginState">
+   <!--  <ion-header>
+        <ion-toolbar>
+            
+        </ion-toolbar>
+    </ion-header> -->
     <ion-content style="background-image': 'url(./assets/images/background-1.jpg)'">
         <h4 text-center color="danger">
         {{info['Name']}} <!-- <button ion-button clear (click)="loginState=false">注销</button> -->
