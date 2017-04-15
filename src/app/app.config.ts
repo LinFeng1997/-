@@ -1,4 +1,5 @@
 /**
+ * 配置文件
  * Modifyd by Blow on 2017-03-06.
  */
 import { Injectable } from '@angular/core';

@@ -1,3 +1,4 @@
+//组件入口文件
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -9,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AppConfig } from './app.config';
 import { AbstractService } from "../interfaces/abstract-service";
 import { AbstractComponent } from '../interfaces/abstract-component';
-//Todo:获取用户登录的token并且存储到缓存中
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,7 +26,7 @@ export class MyApp extends AbstractComponent {
 
     platform.ready()
       .then(() => {
-
+        Splashscreen.hide();
         //保存平台名称
         if (platform.is('android'))
           AppConfig.platform = 'android';
@@ -33,10 +34,6 @@ export class MyApp extends AbstractComponent {
           AppConfig.platform = 'ios';
         else
           AppConfig.platform = 'Browser';
-
-        //获取当前用户
-        // this.getMyIdentity(this.cfg.cacheKeys.username);
-        // this.getMyIdentity(this.cfg.cacheKeys.password);
 
         //存储设备配置信息
         // this.storeConfigInfo();
@@ -61,10 +58,7 @@ export class MyApp extends AbstractComponent {
       this.cacheService.getCacheAsync(cacheKey)
         .then(
         v => {
-          //配置文件中保存用户实例
-          cacheKey = v;
-          // console.log('保存成功');
-          // console.log(cacheKey);
+          //Todo:保存点什么好呢？
         }
         )
         .catch(

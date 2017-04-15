@@ -1,8 +1,9 @@
 <ion-content>
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<div id="area" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<div id="point" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<component-charts></component-charts>
-	
+    <button ion-button full (click)="isShow = !isShow;show()" tappable>显示图表</button>
+    <ng-container>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <div id="area" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <div id="point" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <component-charts></component-charts>
+    </ng-container>
 </ion-content>
-<!-- <component-echarts></component-echarts> -->

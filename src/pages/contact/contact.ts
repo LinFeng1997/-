@@ -9,6 +9,7 @@ import * as echarts from 'highcharts';
 })
 export class ContactPage {
 	chart;
+	isShow: boolean = false;
 	testData: any = [{
 		"课程名称": "离散数学",
 		"总成绩": [87, 88, 81, 84, 60, 14, 86, 89, 70, 51, 67, 83, 80, 96, 60, 86, 86, 91, 87, 60, 88, 74, 86, 93, 93, 96, 91, 86, 87, 75, 78, 91, 81, 76, 83, 79, 75, 50, 64, 74, 88, 84, 87, 62, 64, 75, 80, 60, 72, 58, 60, 76, 60, 69, 62, 60, 71, 76, 60, 38, 68, 40, 71]
@@ -32,11 +33,19 @@ export class ContactPage {
 	}
 
 	ionViewDidEnter() {
-		this.showLineChart();
-		this.showAreaChart();
-		this.showPointChart(this.testData);
-	}
+		this.show();
 
+	}
+	show() {
+		if (this.isShow) {
+			this.showLineChart();
+			this.showAreaChart();
+			this.showPointChart(this.testData);
+		}
+		else{
+			return;
+		}
+	}
 	showLineChart() {
 		this.chart = echarts.chart('container', {
 			chart: {
@@ -225,7 +234,7 @@ export class ContactPage {
 				name: data[5].课程名称,
 				color: 'rgba(223, 83, 83, .5)',
 				data: data[5].总成绩
-			},{
+			}, {
 				name: data[1].课程名称,
 				color: 'rgba(88, 83, 83, .5)',
 				data: data[1].总成绩

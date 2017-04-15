@@ -1,3 +1,4 @@
+//组件声明文件
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 //教师和成绩教学班相关
