@@ -21,14 +21,10 @@ export class UserService extends AbstractService {
      * @returns {Observable<any>}
      */
     userUrpValidate(): Observable<any> {
-        //交换临时url和基础url
-        // [this.cfg.config.webBaseUrl,this.cfg.config.webTmpUrl]=[this.cfg.config.webTmpUrl,this.cfg.config.webBaseUrl];
-        // console.log(this.cfg.config.webBaseUrl);
+
         let res = this.dataSvc.getData('v5api/api/GetLoginCaptchaInfo/d172a5d9-8df0-4983-91a3-db6bb47855bc', null);
         console.log(res);
-        //交换回去临时url和基础url
-        // [this.cfg.config.webBaseUrl,this.cfg.config.webTmpUrl]=[this.cfg.config.webTmpUrl,this.cfg.config.webBaseUrl];
-        // console.log(this.cfg.config.webBaseUrl);
+      
         return res;
     }
     /**

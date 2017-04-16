@@ -7,7 +7,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AboutListPage } from '../about/about-list';
-import { DetailsPage  } from '../about/details';
+import { DetailsPage } from '../about/details';
 import { AboutService } from '../../providers/about.Service'
 
 
@@ -26,7 +26,7 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		protected loadingCtrl: LoadingController,
 		protected toastCtrl: ToastController,
 		protected cfg: AppConfig,
-		protected aboutSvc:AboutService
+		protected aboutSvc: AboutService
 	) {
 		super(cfg, navCtrl, toastCtrl, loadingCtrl);
 	}
@@ -45,17 +45,20 @@ export class AboutPage extends AbstractComponent implements OnInit {
 			else if (value === '老师') {
 				this.teacher = data;
 			}
-			else{
+			else {
 				return;
 			}
 		});
 		courseModal.present();
 		this.closeLoading();
 	}
-	queryTeacher(teacher):any{
-		this.aboutSvc.userChooseCourseValidate().subscribe(u=>{
-
-		})
-		this.navCtrl.push(DetailsPage);
+	queryTeacher(teacher): any {
+		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
+			console.log(u);	
+			this.navCtrl.push(DetailsPage, {teacher:u});
+		}, er => {
+			this.showMessage("你的输入有误！！！！")
+		}
+		)
 	}
 }

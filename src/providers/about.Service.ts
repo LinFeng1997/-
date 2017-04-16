@@ -17,13 +17,19 @@ export class AboutService extends AbstractService {
         super(dataService, cfg); // constructors in derived classes must call super()
     }
 
-       /**
-     * 获取选课验证码
-     * @returns {Observable<any>}
-     */
-    userChooseCourseValidate(): Observable<any> {
-        let res = this.dataSvc.getData('v5api/api/xk/Captcha', null);
+    /**
+  * 获取教师详细信息
+  * @returns {Observable<any>}
+  */
+    queryTeacher(name): Observable<any> {
+        //交换临时url和基础url
+        [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
+        // console.log(this.cfg.config.webBaseUrl);
+        let res = this.dataSvc.getData(`teacher/${name}`, null);
         console.log(res);
+        //交换回去临时url和基础url
+        [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
+        // console.log(this.cfg.config.webBaseUrl);
         return res;
     }
 
