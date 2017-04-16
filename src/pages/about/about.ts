@@ -7,7 +7,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AboutListPage } from '../about/about-list';
-import { TeacherListPage } from '../about/teacher-list';
+import { DetailsPage  } from '../about/details';
+import { AboutService } from '../../providers/about.Service'
+
 
 
 
@@ -23,7 +25,8 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		public modalCtrl: ModalController,
 		protected loadingCtrl: LoadingController,
 		protected toastCtrl: ToastController,
-		protected cfg: AppConfig
+		protected cfg: AppConfig,
+		protected aboutSvc:AboutService
 	) {
 		super(cfg, navCtrl, toastCtrl, loadingCtrl);
 	}
@@ -48,5 +51,11 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		});
 		courseModal.present();
 		this.closeLoading();
+	}
+	queryTeacher(teacher):any{
+		this.aboutSvc.userChooseCourseValidate().subscribe(u=>{
+
+		})
+		this.navCtrl.push(DetailsPage);
 	}
 }

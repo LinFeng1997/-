@@ -23,7 +23,7 @@
             <ion-label fixed>老师名</ion-label>
             <ion-input type="text" [(ngModel)]="teacher"></ion-input>
         </ion-item>
-        <button ion-button full outline color="light" class="opacityHalf">搜索</button>
+        <button ion-button full outline color="light" class="opacityHalf" (click)="queryTeacher(teacher)">搜索</button>
         <ion-row>
             <ion-col (touchstart)="searchItem('老师')">
                 <span>老师名字都不知道？别说话，点我</span>

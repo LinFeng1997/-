@@ -4,6 +4,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 //教师和成绩教学班相关
 import { AboutPage } from '../pages/about/about';
 import { AboutListPage  } from '../pages/about/about-list';
+import { DetailsPage  } from '../pages/about/details';
 //测试页
 import { ContactPage } from '../pages/contact/contact';
 //个人页面
@@ -28,6 +29,7 @@ export const AppComponents: any = [
 	TabsPage,
 	AboutPage,
 	AboutListPage,
+	DetailsPage,
 	ContactPage,
 	RecommandPage,
 	HomePage,

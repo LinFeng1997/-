@@ -68,9 +68,9 @@ export class AppConfig {
         /**
          * 本机测试
          */
-        //临时地址
-        webTmpUrl: "http://www.baidu.com/",
-        //正式地址
+        //自有服务器地址
+        webTmpUrl: "http://139.199.59.47:8080/",
+        //urp地址
         webBaseUrl: "http://202.203.209.96/",
         //urp的token
         urpToken:"",

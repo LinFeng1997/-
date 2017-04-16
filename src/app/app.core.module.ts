@@ -18,6 +18,7 @@ import { HttpDataService } from "../providers/datas/httpData.Service";
 //业务服务
 import { UserService } from "../providers/user.Service";
 import { InfoService } from "../providers/info.Service";
+import { AboutService } from "../providers/about.Service";
 
 //自定义管道
 import { SafeHtmlPipe } from '../pipes/safeHtml.pipe';
@@ -44,7 +45,8 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 		{ provide: AbstractDataService, useExisting: HttpDataService },
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		UserService,
-		InfoService
+		InfoService,
+		AboutService
 	],
 })
 export class CoreModule {
