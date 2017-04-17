@@ -65,7 +65,8 @@ ion-content {
     border-radius: 3%;
 }
 
-ion-content,.transparent-header {
+ion-content,
+.transparent-header {
     // This is just to make the header transparent and button/icon with white color
     .toolbar-content,
     .back-button {
@@ -105,6 +106,17 @@ ion-content,.transparent-header {
     margin: 0;
 }
 
-.width100{
+.width100 {
     width: 100%;
+}
+
+//进度条样式
+.progress-inner {
+    min-width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: map-get($colors, secondary);
+    opacity: 0.7;
 }
