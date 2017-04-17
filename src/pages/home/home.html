@@ -13,6 +13,9 @@
             <button ion-fab color="danger" (click)="loginOut()">
                 <ion-icon name="ios-log-out"></ion-icon>
             </button>
+             <button ion-fab color="secondary" (click)="goToChooseCourse()">
+                选课
+            </button>
         </ion-fab>
         <ion-searchbar placeholder="搜索课程" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
         <ion-card>
@@ -36,7 +39,9 @@
             <ion-card-content>
                 <canvas #pieCanvas></canvas>
             </ion-card-content>
+            <!-- <button ion-button full color="danger" text-center (click)="goToChooseCourse()">我要去选课</button> -->
         </ion-card>
+        
         <ion-card *ngFor="let i = index;let item of courseData;" class="gradeCard">
             <!-- 把学期/课程名/成绩/绩点/学分 放进一个数据结构里，好统一操作 -->
             <ion-card-content >

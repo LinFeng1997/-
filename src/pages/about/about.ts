@@ -54,11 +54,22 @@ export class AboutPage extends AbstractComponent implements OnInit {
 	}
 	queryTeacher(teacher): any {
 		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
-			console.log(u);	
-			this.navCtrl.push(DetailsPage, {teacher:u});
+			console.log(u);
+			this.navCtrl.push(DetailsPage, { teacher: u });
 		}, er => {
-			this.showMessage("你的输入有误！！！！")
+			if (er.status === 500) {
+				this.showMessage("请检查你的输入");
+				return;
+			}
+			this.showMessage("请检查你的网络是否有问题");
 		}
 		)
+	}
+	queryClass(): any {
+		this.showMessage("开发中...");
+	}
+	queryDetalis(): any {
+		this.showMessage("开发中...");
+
 	}
 }

@@ -8,7 +8,7 @@ import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { CourseModel } from '../../entities/CourseModel';
 import { UserService } from "../../providers/user.Service";
-
+//Todo:将选课篮数据加入缓存
 @Component({
 	selector: 'page-choose-course',
 	templateUrl: 'choose-course.html'
@@ -33,7 +33,7 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 		super(cfg, navCtrl, toastCtrl, loadingCtrl, null, alertCtrl);
 	}
 	ngOnInit() {
-		this.model.push(new CourseModel("2017000001", false));
+		// this.model.push(new CourseModel("2017000001", false));
 		console.log('Hello,选课');
 	}
 
@@ -43,6 +43,11 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 	}
 
 	addItem(newItem) {
+		let reg = /^201\d[1-2][0-9A-Z]\d{4}$/g;
+		if (!reg.test(newItem)) {
+			this.showMessage("请输入正确的教学班代码格式~");
+			return;
+		}
 		if (newItem != "") {
 			this.model.push(new CourseModel(newItem, false));
 		}
@@ -68,6 +73,9 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 	chooseSingleCourse(course): any {
 
 		this.userSvc.userChooseCourse(course, this.validate).subscribe(u => {
+			if (u.Result) {
+				this.showMessage(u.Result);
+			}
 			console.log(u);
 		}, er => {
 			this.showMessage('选课失败' + er.message);

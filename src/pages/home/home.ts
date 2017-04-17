@@ -228,9 +228,10 @@ export class HomePage extends AbstractComponent implements OnInit {
 		// console.log(this.jAvg);
 	}
 
-	calWeightedAvg(c):any{
-
+	goToChooseCourse(){
+		this.navCtrl.push('ChooseCourse');
 	}
+
 }
 
 

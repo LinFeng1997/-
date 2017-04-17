@@ -57,4 +57,8 @@ export class DetailsPage extends AbstractComponent implements OnInit {
 	toDetails(item):any{
 		this.showModal(PieChartComponent,{teacher:item});
 	}
+
+	goToChooseCourse(){
+		this.navCtrl.push('ChooseCourse');
+	}
 }
