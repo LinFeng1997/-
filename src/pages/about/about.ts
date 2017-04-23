@@ -53,7 +53,7 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		this.closeLoading();
 	}
 	queryTeacher(teacher): any {
-		if(!teacher){
+		if (!teacher) {
 			this.showMessage("请输入教师姓名");
 			return;
 		}
@@ -69,7 +69,7 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		)
 	}
 	queryClass(course): any {
-		if(!course){
+		if (!course) {
 			this.showMessage("请输入课程名");
 			return;
 		}
@@ -85,17 +85,21 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		)
 	}
 	queryDetalis(course, teacher): any {
-		if(!teacher){
+		if (!teacher) {
 			this.showMessage("请输入教师姓名");
 			return;
 		}
-		if(!course){
+		if (!course) {
 			this.showMessage("请输入课程名");
 			return;
 		}
 		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
 			console.log(u);
-			u = u.filter(e=>{return e['课程名称']===course});
+			u = u.filter(e => { return e['课程名称'] === course });
+			if (!u) {
+				this.showMessage(`${teacher}老師不教${course}這門課`);
+				return;
+			}
 			this.navCtrl.push(DetailsPage, { teacher: u });
 		}, er => {
 			if (er.status === 500) {
