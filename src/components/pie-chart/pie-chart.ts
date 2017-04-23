@@ -63,7 +63,7 @@ export class PieChartComponent extends AbstractComponent implements OnInit {
       },
       series: [{
         type: 'pie',
-        name: '浏览器访问量占比',
+        name: '分数段分布',
         data: [
           ['高分率(90+)', data.goodCount],
           ['良好率', data.commonCount],

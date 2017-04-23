@@ -13,7 +13,7 @@
             <ion-label fixed>课程名</ion-label>
             <ion-input type="text" [(ngModel)]="course"></ion-input>
         </ion-item>
-        <button ion-button full outline color="light" class="opacityHalf" (click)="queryClass()">搜索</button>
+        <button ion-button full outline color="light" class="opacityHalf" (click)="queryClass(course)">搜索</button>
         <ion-row>
             <ion-col (touchstart)="searchItem('课程')">
                 <span>记不清课程名？快戳进来搜索~</span>
@@ -49,6 +49,6 @@
             <ion-label floating>老师名</ion-label>
             <ion-input type="text" [(ngModel)]="teacher"></ion-input>
         </ion-item>
-        <button ion-button class="right opacityHalf" color="dark" full (click)="queryDetalis()">搜索</button>
+        <button ion-button class="right opacityHalf" color="dark" full (click)="queryDetalis(course,teacher)">搜索</button>
     </ng-container>
 </ion-content>

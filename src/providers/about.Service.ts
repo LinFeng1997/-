@@ -13,7 +13,7 @@ import { AppConfig } from "../app/app.config";
  */
 @Injectable()
 export class AboutService extends AbstractService {
-	constructor(private dataService: AbstractDataService, cfg: AppConfig) {
+    constructor(private dataService: AbstractDataService, cfg: AppConfig) {
         super(dataService, cfg); // constructors in derived classes must call super()
     }
 
@@ -24,12 +24,20 @@ export class AboutService extends AbstractService {
     queryTeacher(name): Observable<any> {
         //交换临时url和基础url
         [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
-        // console.log(this.cfg.config.webBaseUrl);
         let res = this.dataSvc.getData(`teacher/${name}`, null);
         console.log(res);
         //交换回去临时url和基础url
         [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
-        // console.log(this.cfg.config.webBaseUrl);
+        return res;
+    }
+
+    queryCourse(name): Observable<any> {
+        //交换临时url和基础url
+        [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
+        let res = this.dataSvc.getData(`course/${name}`, null);
+        console.log(res);
+        //交换回去临时url和基础url
+        [this.cfg.config.webBaseUrl, this.cfg.config.webTmpUrl] = [this.cfg.config.webTmpUrl, this.cfg.config.webBaseUrl];
         return res;
     }
 

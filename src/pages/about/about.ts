@@ -53,8 +53,11 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		this.closeLoading();
 	}
 	queryTeacher(teacher): any {
+		if(!teacher){
+			this.showMessage("请输入教师姓名");
+			return;
+		}
 		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
-			console.log(u);
 			this.navCtrl.push(DetailsPage, { teacher: u });
 		}, er => {
 			if (er.status === 500) {
@@ -65,11 +68,42 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		}
 		)
 	}
-	queryClass(): any {
-		this.showMessage("开发中...");
+	queryClass(course): any {
+		if(!course){
+			this.showMessage("请输入课程名");
+			return;
+		}
+		this.aboutSvc.queryCourse(course).subscribe(u => {
+			this.navCtrl.push(DetailsPage, { teacher: u });
+		}, er => {
+			if (er.status === 500) {
+				this.showMessage("请检查你的输入");
+				return;
+			}
+			this.showMessage("请检查你的网络是否有问题");
+		}
+		)
 	}
-	queryDetalis(): any {
-		this.showMessage("开发中...");
-
+	queryDetalis(course, teacher): any {
+		if(!teacher){
+			this.showMessage("请输入教师姓名");
+			return;
+		}
+		if(!course){
+			this.showMessage("请输入课程名");
+			return;
+		}
+		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
+			console.log(u);
+			u = u.filter(e=>{return e['课程名称']===course});
+			this.navCtrl.push(DetailsPage, { teacher: u });
+		}, er => {
+			if (er.status === 500) {
+				this.showMessage("请检查你的输入");
+				return;
+			}
+			this.showMessage("请检查你的网络是否有问题");
+		}
+		)
 	}
 }
