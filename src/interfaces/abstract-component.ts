@@ -314,14 +314,14 @@ export class AbstractComponent {
         if (buttonText == null || buttonText == '')
             buttonText = '确定';
 
-        //
+    
         let alert = this.alertCtrl.create({
             title: title,
             subTitle: description,
             buttons: [buttonText]
         });
 
-        //
+        
         alert.present();
     }
 

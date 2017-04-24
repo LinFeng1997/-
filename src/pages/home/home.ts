@@ -119,13 +119,14 @@ export class HomePage extends AbstractComponent implements OnInit {
 			datasets: [
 				{
 					data: this.handleGrade(),
-					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#000"],
-					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#261E47", "#000"]
+					backgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#2ED244", "#000"],
+					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#2ED244", "#000"]
 				}]
 		};
 		this.closeLoading();
 		return this.getChart(this.pieCanvas.nativeElement, "pie", data);
 	}
+
 	getChart(context, chartType, data, options?) {
 		return new Chart(context, {
 			type: chartType,

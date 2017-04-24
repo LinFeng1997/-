@@ -28,6 +28,15 @@ export class InfoService extends AbstractService {
 		return notice;
 	}
 
+	loadUserInfo(): Observable<any> {
+		let random: number = Math.floor(Math.random() * 6);
+		let name: Array<string> = ['谁念西风独自凉', '萧萧黄叶闭疏窗', '沉思往事立残阳', '被酒莫惊春睡重', '赌书消得泼茶香', '当时只道是寻常'];
+		let icon: Array<string> = ['./assets/images/tx1.jpg', './assets/images/tx2.jpg', './assets/images/tx3.jpg', './assets/images/tx4.jpg', './assets/images/tx5.jpg', './assets/images/tx6.jpg'];
+
+		return Observable.of(
+			[null, name[random], icon[random]]
+		);
+	}
 
 	getAsyncCourseData(): Promise<any[]> {
 		// async receive mock data

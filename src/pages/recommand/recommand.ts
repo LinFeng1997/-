@@ -2,11 +2,12 @@
  * Created by Blow on 2017-03-31.
  */
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, ToastController, ViewController } from 'ionic-angular';
+import { ModalController, LoadingController, ToastController, ViewController,AlertController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
+import { InfoService } from "../../providers/info.Service";
 
 declare let window: any;
 @Component({
@@ -16,17 +17,49 @@ declare let window: any;
 export class RecommandPage extends AbstractComponent implements OnInit {
 	testValue: string = "";
 	testDeletedValue: string = "";
+	selfInformation: any;
 	constructor(public viewCtrl: ViewController, public navCtrl: NavController,
 		public modalCtrl: ModalController,
 		protected loadingCtrl: LoadingController,
 		protected toastCtrl: ToastController,
+		protected alertCtrl:AlertController,
 		protected cfg: AppConfig,
+		private infoSvc: InfoService,
 		private cacheService: AbstractService
 	) {
-		super(cfg, navCtrl, toastCtrl, loadingCtrl);
+		super(cfg, navCtrl, toastCtrl, loadingCtrl,null,alertCtrl);
 	}
 	ngOnInit() {
+		//查询当前用户
+		this.infoSvc.loadUserInfo()
+			.subscribe(
+			us => {
+				this.selfInformation = us;
+				//
+				// if (AppConfig.debug)
+				//     console.log(this.selfInformation);
 
+				// if (AppConfig.currentUser != null && AppConfig.currentUser.isLogined) {
+				//     this.selfInformation.name = AppConfig.currentUser.name;
+				//     this.selfInformation.icon = AppConfig.currentUser.icon;
+				// }
+			}
+			)
+	}
+
+	// 通知提示，Alert组件抽象出了问题
+	showNotice(): void {
+		// this.showLoading("<h1>lihai</h1>");
+		// this.closeLoading();
+		// this.showMessage("开发中");
+		this.showAlert("给程序员哥哥打赏点钱吧~","开发中");
+	}
+
+	selectImg() {
+		this.showMessage("开发中");
+	}
+	chooseCourse(){
+		this.navCtrl.push("ChooseCourse");
 	}
 	// 根据不同情况增加缓存，课程那个可能是个数组，一直push啊push啊
 	addToCache(value) {
