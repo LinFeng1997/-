@@ -68,7 +68,12 @@ page-about {
         }
     }
     .beautySpan {
-        // color: aquamarine;
-        font-size: 1.5rem;
+        text-shadow: 0 0 0.5vh, 0 0 0.3vh;
+        font-size: 1.8rem;
+    }
+    .beautySpan:hover{
+        color: transparent;
+        text-shadow: 0 0 0.5vh  white, 0 0 0.3vh white;
+
     }
 }

@@ -1,4 +1,4 @@
-<!-- <component-charts></component-charts> -->
+    <!-- <component-charts></component-charts> -->
 <ion-content padding>
     <ion-segment [(ngModel)]="howSearch">
         <ion-segment-button value="模糊搜索">
@@ -16,7 +16,7 @@
         <button ion-button full outline color="light" class="opacityHalf" (click)="queryClass(course)">搜索</button>
         <ion-row>
             <ion-col (touchstart)="searchItem('课程')">
-                <span>记不清课程名？快戳进来搜索~</span>
+                <span class="beautySpan">记不清课程名？快戳进来搜索~</span>
             </ion-col>
         </ion-row>
         <ion-item class="marginTop">
@@ -26,7 +26,7 @@
         <button ion-button full outline color="light" class="opacityHalf" (click)="queryTeacher(teacher)">搜索</button>
         <ion-row>
             <ion-col (touchstart)="searchItem('老师')">
-                <span>老师名字都不知道？别说话，点我</span>
+                <span class="beautySpan">老师名字都不知道？别说话，点我</span>
             </ion-col>
         </ion-row>
     </ng-container>

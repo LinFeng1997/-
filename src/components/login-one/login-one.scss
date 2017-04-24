@@ -6,7 +6,7 @@ login-component {
     border-color: transparent;
   }
   .logo {
-    width: 225px;
+    width: 25vh;
     height: auto;
     margin: 0 auto;
   }
@@ -39,7 +39,7 @@ login-component {
   }
   .validate{
     position: absolute;
-    top: 67%;
+    bottom:-1vh;
     right: 0;
   }
 }
