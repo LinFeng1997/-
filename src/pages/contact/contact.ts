@@ -32,6 +32,10 @@ export class ContactPage {
 	constructor(public navCtrl: NavController) {
 	}
 
+	get pageCount(): number {
+        return 4;
+    }
+
 	ionViewDidEnter() {
 		this.show();
 

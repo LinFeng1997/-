@@ -11,11 +11,14 @@ import { AppComponents } from './app.component.module';
 // deeplink
 import { ActionLinks } from './app.routes.module';
 
+//自定义指令,以后多了是要抽象的
+import { CounterDirective } from '../directives/counter.directive';
+
 import './rxjs.extensions';
 
 
 @NgModule({
-  declarations: [ AppComponents ],
+  declarations: [ AppComponents,CounterDirective ],
   imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule ],
   bootstrap: [IonicApp],
   entryComponents: [ AppComponents ],

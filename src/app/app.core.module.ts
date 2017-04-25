@@ -27,8 +27,8 @@ import { SafeStylePipe } from '../pipes/safeStyle.pipe';
 import { SafeUrlPipe } from '../pipes/safeUrl.pipe';
 import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 
-//自定义指令
-import { CounterDirective } from '../directives/counter.directive';
+// //自定义指令
+// import { CounterDirective } from '../directives/counter.directive';
 		
 
 //Directives
@@ -36,7 +36,7 @@ import { CounterDirective } from '../directives/counter.directive';
 @NgModule({
 	imports: [CommonModule, FormsModule],//,JsonpModule
 	//管道处理数据
-	declarations: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe,CounterDirective],
+	declarations: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	exports: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	// 服务
 	providers: [
