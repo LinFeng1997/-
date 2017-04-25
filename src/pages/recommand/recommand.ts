@@ -51,7 +51,6 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	showNotice(): void {
 		// this.showLoading("<h1>lihai</h1>");
 		// this.closeLoading();
-		// this.showMessage("开发中");
 		this.showAlert("给程序员哥哥打赏点钱吧~","开发中");
 	}
 
@@ -60,6 +59,10 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	}
 	chooseCourse(){
 		this.navCtrl.push("ChooseCourse");
+	}
+	doRefresh(event){
+		console.log(event);
+		event.complete();
 	}
 	// 根据不同情况增加缓存，课程那个可能是个数组，一直push啊push啊
 	addToCache(value) {
