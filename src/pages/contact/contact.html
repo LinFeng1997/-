@@ -2,6 +2,7 @@
     <button ion-button round color="danger" *counter="let page of pageCount" (click)="isShow = !isShow;show()">
         {{page}}
     </button>
+
     <section [class.isShow]="isShow">
         <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         <div id="area" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -9,3 +10,5 @@
         <component-charts></component-charts>
     </section>
 </ion-content>
+
+

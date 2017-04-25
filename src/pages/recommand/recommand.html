@@ -1,5 +1,4 @@
-<ion-content >
-
+<ion-content>
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -24,19 +23,24 @@
     </ion-row>
     <ion-list>
         <button ion-item (click)="chooseCourse()">
-            <ion-icon name="md-list-box" item-left ></ion-icon>
+            <ion-icon name="md-list-box" item-left></ion-icon>
             <ion-label>选课篮</ion-label>
             <ion-note item-right>查看></ion-note>
         </button>
         <button ion-item (click)="showNotice()">
-            <ion-icon name="ios-bonfire" item-left color="danger" ></ion-icon>
+            <ion-icon name="ios-bonfire" item-left color="danger"></ion-icon>
             <ion-label>学习CP</ion-label>
             <ion-note item-right>配对></ion-note>
         </button>
         <button ion-item (click)="showNotice()">
-            <ion-icon name="md-bulb" item-left color="secondary" ></ion-icon>
+            <ion-icon name="md-bulb" item-left color="secondary"></ion-icon>
             <ion-label>课程推荐</ion-label>
             <ion-note item-right>收费></ion-note>
+        </button>
+        <button ion-item (click)="playGame2048()">
+            <ion-icon name="ios-game-controller-b" item-left color="dark"></ion-icon>
+            <ion-label>学什么习</ion-label>
+            <ion-note item-right>堕落></ion-note>
         </button>
     </ion-list>
     <!-- <ion-input type="text" placeholder="缓存值" [(ngModel)]="testValue" clearInput></ion-input>

@@ -18,6 +18,7 @@ import { LoginComponent } from '../components/login-one/login-one';
 import { ChartsComponent } from '../components/charts/charts';
 import { ItemListComponent } from '../components/item-list/item-list';
 import { PieChartComponent } from '../components/pie-chart/pie-chart';
+import { Game2048Component } from '../components/game-2048/game-2048';
 
 // import { EchartsComponent } from '../components/echarts/echarts';
 
@@ -40,7 +41,8 @@ export const AppComponents: any = [
 	LoginComponent,
 	ChartsComponent,
 	ItemListComponent,
-	PieChartComponent
+	PieChartComponent,
+	Game2048Component,
 	// EchartsComponent
 ]
 

@@ -8,6 +8,7 @@ import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
 import { InfoService } from "../../providers/info.Service";
+import { Game2048Component } from "../../components/game-2048/game-2048";
 
 declare let window: any;
 @Component({
@@ -63,6 +64,10 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	doRefresh(event){
 		console.log(event);
 		event.complete();
+	}
+
+	playGame2048(){
+		this.showModal(Game2048Component);
 	}
 	// 根据不同情况增加缓存，课程那个可能是个数组，一直push啊push啊
 	addToCache(value) {
