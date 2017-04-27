@@ -10,6 +10,7 @@ import { UserService } from "../../providers/user.Service";
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
+import { ValidateCodeInputComponent} from '../components/validate-code-input/validate-code-input';
 
 @Component({
   selector: 'login-component',
@@ -30,11 +31,12 @@ export class LoginComponent extends AbstractComponent implements OnInit {
     public modalCtrl: ModalController,
     protected loadingCtrl: LoadingController,
     protected toastCtrl: ToastController,
+    protected alertCtrl: AlertController,
     private userSvc: UserService,
     protected cfg: AppConfig,
     private cacheService: AbstractService
   ) {
-    super(cfg, navCtrl, toastCtrl, loadingCtrl);
+    super(cfg, navCtrl, toastCtrl, loadingCtrl,null,alertCtrl);
   }
   ngOnInit() {
     this.getCache();
@@ -92,6 +94,10 @@ export class LoginComponent extends AbstractComponent implements OnInit {
     );
     ;
     this.loadLoginValidate();
+  }
+
+  login():any{
+    this.showPrompt('输入验证码',"","请输入下方验证码",(e)=>{this.validate = e});
   }
   sb(): any {
     // this.showMessage('就不告诉你！');

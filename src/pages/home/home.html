@@ -1,20 +1,20 @@
-<!-- 反馈：键盘挡住，验证码在某些机型不兼容 -->
+<!-- 反馈：键盘问题，验证码在某些机型不兼容 -->
 <login-component (loginSuccess)="loadUserInfo($event)" *ngIf="!loginState"></login-component>
 <ng-container *ngIf="loginState">
-   <!--  <ion-header>
+    <!--  <ion-header>
         <ion-toolbar>
             
         </ion-toolbar>
     </ion-header> -->
     <ion-content style="background-image': 'url(./assets/images/background-1.jpg)'">
-        <h4 text-center color="danger">
+        <h4 text-center color="dark">
         {{info['Name']}} <!-- <button ion-button clear (click)="loginState=false">注销</button> -->
-    </h4>
+        </h4>
         <ion-fab right top>
             <button ion-fab color="danger" (click)="loginOut()">
                 <ion-icon name="ios-log-out"></ion-icon>
             </button>
-             <button ion-fab color="secondary" (click)="goToChooseCourse()">
+            <button ion-fab color="secondary" (click)="goToChooseCourse()">
                 选课
             </button>
         </ion-fab>
@@ -42,15 +42,14 @@
             </ion-card-content>
             <!-- <button ion-button full color="danger" text-center (click)="goToChooseCourse()">我要去选课</button> -->
         </ion-card>
-        
         <ion-card *ngFor="let i = index;let item of courseData;" class="gradeCard">
             <!-- 把学期/课程名/成绩/绩点/学分 放进一个数据结构里，好统一操作 -->
-            <ion-card-content >
+            <ion-card-content>
                 <ion-card-title text-center>
                     <h3>课程名：{{item.courseName}}</h3>
                     <h4>学期:{{item.semesterId}}期{{item.courseNature}}</h4>
                 </ion-card-title>
-                <ion-row text-center >
+                <ion-row text-center>
                     <ion-col width-33>
                         <ion-label>成绩:</ion-label>
                         <h4>{{item.result}}分</h4>
@@ -63,7 +62,7 @@
                         <ion-label>学分：</ion-label>
                         <h4>{{item.credit}} </h4>
                     </ion-col>
-                </ion-row>                
+                </ion-row>
             </ion-card-content>
         </ion-card>
     </ion-content>

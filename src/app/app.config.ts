@@ -69,7 +69,7 @@ export class AppConfig {
          * 本机测试
          */
         //自有服务器地址
-        webTmpUrl: "http://139.199.59.47:8080/",
+        webTmpUrl: "http://139.199.59.47:8000/",
         //urp地址
         webBaseUrl: "http://202.203.209.96/",
         //urp的token
@@ -213,6 +213,7 @@ export class AppConfig {
     cacheKeys = {
         user:"urp用户",
         password:"密码",
+        courseItem:"选课"
         //Todo:课程成绩的对象
         //Todo:推荐课程的对象
     };

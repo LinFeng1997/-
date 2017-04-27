@@ -4,12 +4,17 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
+    <ion-fab right top>
+        <button ion-fab color="dark" (click)="clearCourseItem()">
+            <ion-icon name="md-trash"></ion-icon>
+        </button>
+    </ion-fab>
     <ion-list>
         <ion-list-header text-center>
             我的选课篮
         </ion-list-header>
         <!-- 这里可能要做输入验证 -->
-        <ion-input type="text" value="" placeholder="在这里输入10位选课代码" clear #todoText ></ion-input>
+        <ion-input type="text" value="" placeholder="在这里输入10位选课代码" clear #todoText></ion-input>
         <button ion-button (click)="addItem(todoText.value)" full>
             添加选课代码
         </button>
@@ -49,6 +54,9 @@
         <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCode"></ion-input>
         <button ion-button (click)="chooseSingleCourse(courseId)" full>
             确认选择
+        </button>
+        <button ion-button (click)="chooseCourse()" full color="danger">
+            批量选课
         </button>
     </ng-container>
 </ion-content>

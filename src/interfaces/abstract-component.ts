@@ -314,14 +314,14 @@ export class AbstractComponent {
         if (buttonText == null || buttonText == '')
             buttonText = '确定';
 
-    
+
         let alert = this.alertCtrl.create({
             title: title,
             subTitle: description,
             buttons: [buttonText]
         });
 
-        
+
         alert.present();
     }
 
@@ -333,7 +333,7 @@ export class AbstractComponent {
      * @param okBtnText 确认按钮文字，默认确定
      * @param cancelBtnText 取消按钮文字，默认取消
      */
-    confirm(title: string, description: string, callBack: (res: boolean) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
+    confirm(title: string, description: string, callBack?: (res: boolean) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
         let alert = this.alertCtrl.create({
             title: title,
             message: description,
@@ -360,6 +360,38 @@ export class AbstractComponent {
         return alert;
     }
 
+
+    showPrompt(title: string, description: string,placeholder:string,callBack: (res: any) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
+        let prompt = this.alertCtrl.create({
+            title: title,
+            message: description,
+            inputs: [
+                {
+                    name: 'title',
+                    placeholder: placeholder
+                },
+            ],
+            buttons: [
+                {
+                    text: cancelBtnText,
+                    role: 'cancel',
+                    handler: () => {
+                        // callBack(false);
+                    }
+                },
+                {
+                    text: okBtnText,
+                    handler: () => {
+                        console.log(prompt.data.inputs[0].value);
+                        callBack(prompt.data.inputs[0].value);
+                    }
+                }
+            ]
+        });
+        prompt.present();
+        return prompt;
+
+    }
     //#endregion
 
     //#region 视图辅助

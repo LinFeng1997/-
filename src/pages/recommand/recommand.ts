@@ -62,7 +62,12 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 		this.navCtrl.push("ChooseCourse");
 	}
 	doRefresh(event){
-		console.log(event);
+		this.infoSvc.loadUserInfo()
+			.subscribe(
+			us => {
+				this.selfInformation = us;
+			}
+			)
 		event.complete();
 	}
 

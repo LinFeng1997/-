@@ -22,7 +22,7 @@
                 <ion-icon name="arrow-dropleft"></ion-icon>
             </button>
             <ion-fab-list side="left">
-                <button ion-fab (click)="showGameOver = !1; start();" >
+                <button ion-fab (click)="showGameOver = !1; start();">
                     <ion-icon name="md-refresh"></ion-icon>
                 </button>
             </ion-fab-list>
@@ -57,14 +57,10 @@
     <div class="items-box">
         <div *ngFor="let item of items" [class]="'item item-'+ (item>8192 ? '16384' : item)">
             {{item
-            < 2 ? '' : item}}</div>
+            < 2 ? '' : item}} </div>
         </div>
         <!-- <button ion-button (click)="up()">上</button>
         <button ion-button (click)="down()">下</button>
         <button ion-button (click)="left()">左</button>
         <button ion-button (click)="right()">右</button> -->
-        <div class="tips">
-            <h5>学习不如玩游戏！</h5>
-            <p>咋玩：滑动手指控制方向，合并相同数字获得胜利或者失败</p>
-        </div>
 </ion-content>

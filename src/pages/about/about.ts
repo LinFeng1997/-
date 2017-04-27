@@ -94,9 +94,9 @@ export class AboutPage extends AbstractComponent implements OnInit {
 			return;
 		}
 		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
-			console.log(u);
+			// console.log(u);
 			u = u.filter(e => { return e['课程名称'] === course });
-			if (!u) {
+			if (u.length===0) {
 				this.showMessage(`${teacher}老師不教${course}這門課`);
 				return;
 			}
