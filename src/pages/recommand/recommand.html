@@ -10,15 +10,16 @@
     <ion-row class="self-about">
         <ion-col width-33 color="grey-silver" (click)="showNotice()">
             <ion-icon name="md-text"></ion-icon>
+            <ion-badge color="secondary"></ion-badge>
             <span>消息</span>
         </ion-col>
-        <ion-col width-33 color="grey-silver" (click)="showNotice()">
+        <ion-col width-33 color="grey-silver" (click)="recommandWechat()">
             <ion-icon name="ios-star-outline"></ion-icon>
             <span>卖舍友</span>
         </ion-col>
-        <ion-col width-33 color="grey-silver" (click)="showNotice()">
+        <ion-col width-33 color="grey-silver" (click)="recommandWechat()">
             <ion-icon name="md-heart"></ion-icon>
-            <span>聚餐</span>
+            <span>旅行</span>
         </ion-col>
     </ion-row>
     <ion-list>
@@ -27,7 +28,7 @@
             <ion-label>选课篮</ion-label>
             <ion-note item-right>查看></ion-note>
         </button>
-        <button ion-item (click)="showNotice()">
+        <button ion-item (click)="p2p()">
             <ion-icon name="ios-bonfire" item-left color="danger"></ion-icon>
             <ion-label>学习CP</ion-label>
             <ion-note item-right>配对></ion-note>

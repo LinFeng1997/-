@@ -13,6 +13,8 @@ import { ChooseCoursePage } from '../pages/home/choose-course';
 
 //推荐页面
 import { RecommandPage } from '../pages/recommand/recommand';
+import { RecommandWechatPage } from '../pages/recommand/recommand-wechat'
+import { RecommandP2pPage } from '../pages/recommand/recommand-p2p'
 
 import { LoginComponent } from '../components/login-one/login-one';
 import { ChartsComponent } from '../components/charts/charts';
@@ -35,6 +37,8 @@ export const AppComponents: any = [
 	DetailsPage,
 	ContactPage,
 	RecommandPage,
+	RecommandWechatPage,
+	RecommandP2pPage,
 	HomePage,
 	ChooseCoursePage,
 

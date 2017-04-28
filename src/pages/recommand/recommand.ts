@@ -9,6 +9,7 @@ import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
 import { InfoService } from "../../providers/info.Service";
 import { Game2048Component } from "../../components/game-2048/game-2048";
+import { RecommandWechatPage } from '../../pages/recommand/recommand-wechat'
 
 declare let window: any;
 @Component({
@@ -71,6 +72,13 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 		event.complete();
 	}
 
+	recommandWechat(){
+		this.showModal(RecommandWechatPage);
+	}
+	p2p(){
+		//Todo:用户验证
+		this.navCtrl.push("RecommandP2p");
+	}
 	playGame2048(){
 		this.showModal(Game2048Component);
 	}
