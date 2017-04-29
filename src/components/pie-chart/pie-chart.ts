@@ -73,7 +73,8 @@ export class PieChartComponent extends AbstractComponent implements OnInit {
             sliced: true,
             selected: true
           },
-        ]
+        ],
+        colors: ['#ffc450', '#c8c7cc', '#e75a48']
       }]
     });
   }

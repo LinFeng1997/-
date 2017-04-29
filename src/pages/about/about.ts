@@ -58,6 +58,7 @@ export class AboutPage extends AbstractComponent implements OnInit {
 			return;
 		}
 		this.aboutSvc.queryTeacher(teacher).subscribe(u => {
+			console.log(u);
 			this.navCtrl.push(DetailsPage, { teacher: u });
 		}, er => {
 			if (er.status === 500) {

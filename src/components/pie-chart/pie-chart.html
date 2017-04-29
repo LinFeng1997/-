@@ -2,6 +2,24 @@
     <button ion-button icon-only clear class="icon-button" navPop>
         <ion-icon name="ios-arrow-dropleft-circle"></ion-icon>
     </button>
-    <div id="chart" style="min-width: 310px; height: 600px; margin: 0 auto">
+    <div id="chart" style="min-width: 310px; height: 480px; margin: 0 auto">
     </div>
+    <ion-card class="gradeCard">
+        <ion-card-content>
+            <ion-row text-center>
+                <ion-col width-33>
+                    <ion-label>最高:</ion-label>
+                    <h4>{{teacherItem.max}}分</h4>
+                </ion-col>
+                <ion-col width-33>
+                    <ion-label>最低：</ion-label>
+                    <h4>{{teacherItem.min}}分</h4>
+                </ion-col>
+                <ion-col width-33>
+                    <ion-label>方差：</ion-label>
+                    <h4>{{teacherItem.dif}} </h4>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

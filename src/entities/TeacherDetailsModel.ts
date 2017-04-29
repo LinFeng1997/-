@@ -9,6 +9,12 @@ export class TeacherDetailsModel{
     studentCount;
     // 平均分
     avg;
+    // 最高分
+    max;
+    // 最低分
+    min;
+    // 方差
+    dif;
     // 60以下
     badCount;
     // 60-90
@@ -16,12 +22,15 @@ export class TeacherDetailsModel{
     // 90以上
     goodCount;
 
-    constructor(classId?,className?,teacherName?,studentCount?,avg?,badCount?,commonCount?,goodCount?){
+    constructor(classId?,className?,teacherName?,studentCount?,avg?,max?,min?,dif?,badCount?,commonCount?,goodCount?){
         this.classId = classId;
         this.className = className;
         this.teacherName = teacherName;
         this.studentCount = studentCount;
         this.avg = avg;
+        this.max = max;
+        this.min = min;
+        this.dif = dif;
         this.badCount = badCount;
         this.commonCount = commonCount;
         this.goodCount = goodCount;
