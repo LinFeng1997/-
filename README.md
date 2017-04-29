@@ -13,6 +13,7 @@
 
 ### 项目结构
 
+```
 │  .editorconfig
 │  .gitignore
 │  config.xml
@@ -97,6 +98,7 @@
     │          
     └─theme //样式
             variables.scss
+```
 
 ### ionic安装
 
