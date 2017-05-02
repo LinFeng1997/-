@@ -2,7 +2,7 @@
 =====================
 
 
-## 启动这个项目
+## 项目简介
 
 * 环境：node
 * UI框架：ionic3
@@ -10,6 +10,8 @@
 * 连接设备API：cordova
 * 本地存储：pouchDB
 * 工具库：lodash/chartjs/highchart/moment等
+* 2048游戏的代码引入自Hsuan Lee的ionic2-2048
+
 
 ### 项目结构
 
@@ -103,7 +105,7 @@
 ### ionic安装
 
 ```bash
-$ npm install -g ionic
+$ npm install -g ionic cordova
 ```
 
 ### 运行

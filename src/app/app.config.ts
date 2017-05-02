@@ -73,9 +73,9 @@ export class AppConfig {
         //urp地址
         webBaseUrl: "http://202.203.209.96/",
         //学号
-        id:"",
+        id:"none",
         //邀请码
-        code:"",
+        code:"none",
         //urp的token
         urpToken:"",
         /**
