@@ -80,6 +80,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
         this.showMessage('登录成功！');
         //存储账号密码为缓存  
         this.addToCache(this.username, this.password);
+        this.cfg.config.id = this.username;
       },
       er => {
         this.closeLoading();
@@ -134,6 +135,7 @@ export class LoginComponent extends AbstractComponent implements OnInit {
             this.username = v.username;
             this.password = v.password;
             this.cfg.config.urpToken = v.token;
+            this.cfg.config.id = v.username;
         })
         .catch(er => {
           console.log("错误");

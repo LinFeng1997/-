@@ -101,6 +101,9 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 	chooseCourse(){
 		this.showAlert("非VIP会员无法享受此功能","此功能暂不开放");
 	}
+	openChooseCourse(){
+		this.openExternalUrl("查看课程",'http://202.203.209.96/v5/#/teachClassOverview');
+	}
 	addToCache(value) {
 		let cacheKey = this.cfg.cacheKeys.courseItem;
 		// 数组系列(多值)

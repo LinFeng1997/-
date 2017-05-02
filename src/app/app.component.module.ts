@@ -5,6 +5,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AboutPage } from '../pages/about/about';
 import { AboutListPage } from '../pages/about/about-list';
 import { DetailsPage } from '../pages/about/details';
+import {TokenValidatePage} from '../pages/about/token-validate';
+
 //测试页
 import { ContactPage } from '../pages/contact/contact';
 //个人页面
@@ -35,6 +37,7 @@ export const AppComponents: any = [
 	AboutPage,
 	AboutListPage,
 	DetailsPage,
+	TokenValidatePage,
 	ContactPage,
 	RecommandPage,
 	RecommandWechatPage,

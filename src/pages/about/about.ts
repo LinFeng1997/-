@@ -65,6 +65,11 @@ export class AboutPage extends AbstractComponent implements OnInit {
 				this.showMessage("请检查你的输入");
 				return;
 			}
+			else if(er.status === 401){
+				this.showMessage(er.message);
+				this.navCtrl.push('TokenValidate');
+				return;
+			}
 			this.showMessage("请检查你的网络是否有问题");
 		}
 		)
@@ -79,6 +84,11 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		}, er => {
 			if (er.status === 500) {
 				this.showMessage("请检查你的输入");
+				return;
+			}
+			else if(er.status === 401){
+				this.showMessage(er.message);
+				this.navCtrl.push('TokenValidate');
 				return;
 			}
 			this.showMessage("请检查你的网络是否有问题");
@@ -105,6 +115,11 @@ export class AboutPage extends AbstractComponent implements OnInit {
 		}, er => {
 			if (er.status === 500) {
 				this.showMessage("请检查你的输入");
+				return;
+			}
+			else if(er.status === 401){
+				this.showMessage(er.message);
+				this.navCtrl.push('TokenValidate');
 				return;
 			}
 			this.showMessage("请检查你的网络是否有问题");

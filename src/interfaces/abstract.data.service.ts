@@ -111,7 +111,9 @@ export abstract class AbstractDataService implements iDataService {
                 'Content-Type': 'application/json',
                 "Authorization":`Bearer ${this.cfg.config.urpToken}`,
                 "Access-Control-Allow-Origin": "*",
-                "proxyUrl": "http://202.203.209.96"
+                "code": `${this.cfg.config.code}`,
+                // "code": "f01b0fd2-4db5-56dd-bd8c-8602eac1832d",
+                "id":`${this.cfg.config.id}`
             });
 
 
