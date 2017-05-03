@@ -3,7 +3,9 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf, ErrorHandler } from 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 import { IonicErrorHandler } from "ionic-angular";
-
+//后来加的
+import { BrowserModule } from '@angular/platform-browser';
+import { Http,HttpModule,ConnectionBackend } from '@angular/http';
 //配置服务
 import { AppConfig } from './app.config';
 import { AppVersion } from '@ionic-native/app-version';
@@ -14,6 +16,7 @@ import { Device } from '@ionic-native/device';
 import { AbstractDataService } from "../interfaces/abstract.data.service";
 import { AbstractService } from "../interfaces/abstract-service";
 import { HttpDataService } from "../providers/datas/httpData.Service";
+//Info:此处为了兼容新版本修改了一处：引入Bro模块
 
 //业务服务
 import { UserService } from "../providers/user.Service";
@@ -29,12 +32,12 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 
 // //自定义指令
 // import { CounterDirective } from '../directives/counter.directive';
-		
+
 
 //Directives
 
 @NgModule({
-	imports: [CommonModule, FormsModule],//,JsonpModule
+	imports: [CommonModule, FormsModule, BrowserModule,HttpModule],//,JsonpModule
 	//管道处理数据
 	declarations: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
 	exports: [SafeHtmlPipe, SafeScriptPipe, SafeStylePipe, SafeUrlPipe, SafeResourceUrlPipe],
