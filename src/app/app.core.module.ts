@@ -5,11 +5,13 @@ import { FormsModule } from "@angular/forms";
 import { IonicErrorHandler } from "ionic-angular";
 //后来加的
 import { BrowserModule } from '@angular/platform-browser';
-import { Http,HttpModule,ConnectionBackend } from '@angular/http';
+import { HttpModule } from '@angular/http';
 //配置服务
 import { AppConfig } from './app.config';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
 
 //数据服务
@@ -45,6 +47,8 @@ import { SafeResourceUrlPipe } from '../pipes/safeResourceUrl.pipe';
 	providers: [
 		AppConfig,
 		AppVersion,
+		SplashScreen,
+		StatusBar,
 		HttpDataService,
 		AbstractService,
 		Device,

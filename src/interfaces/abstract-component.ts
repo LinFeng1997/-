@@ -3,7 +3,8 @@
  */
 import { Injectable, Component, EventEmitter, Input } from '@angular/core';
 import { AppConfig } from "../app/app.config";
-import { Toast } from 'ionic-native';
+// import { Toast } from 'ionic-native';
+import {Toast} from '@ionic-native/toast';
 import {
     AlertController, Alert, ToastController, NavController, LoadingController, Loading, ModalController, Modal,
     PopoverController, Popover, ActionSheetController, NavParams
@@ -23,7 +24,6 @@ declare let $: any;
  */
 @Injectable()
 export class AbstractComponent {
-
 
     //#region 基本属性
     /**
@@ -68,11 +68,10 @@ export class AbstractComponent {
         protected alertCtrl?: AlertController,
         protected popCtrl?: PopoverController,
         protected actionCtrl?: ActionSheetController,
-        protected navParams?: NavParams) {
-
+        protected navParams?: NavParams,
+        public devToast?:Toast) {
         if (AppConfig.debug)
             console.log(`${cfg.config.logTAG}ctox Abstract Component Provider`);
-
         //参数提取，标题，返回按钮，确定按钮
         if (navParams != null) {
             //
@@ -184,8 +183,8 @@ export class AbstractComponent {
                 //在真机上，用更好看的toast
                 if (position === AppConfig.toastParam.position.middle)
                     position = 'center';
-
-                Toast.show(msg, timeout.toString(), position)
+                
+                this.devToast.show(msg, timeout.toString(), position)
                     .subscribe(
                     toast => {
                         if (AppConfig.debug)
