@@ -1,9 +1,11 @@
+//Info:此处为了兼容新版本修改了两处：引入Bro模块和修改Storage传参
 //模块加载文件
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 // 基本配置文件
 import { AppConfig } from './app.config';
+
 // 核心模块
 import { CoreModule } from './app.core.module';
 // 组件
@@ -23,7 +25,7 @@ import './rxjs.extensions';
 
 @NgModule({
   declarations: [ AppComponents,CounterDirective,SwipeVertical ],
-  imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule ],
+  imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule],
   bootstrap: [IonicApp],
   entryComponents: [ AppComponents ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{ provide: Storage, useFactory: provideStorage }]
@@ -31,5 +33,6 @@ import './rxjs.extensions';
 export class AppModule {}
 
 export function provideStorage() {
-  return new Storage(['sqlite', 'websql', 'indexeddb'], { name: '__2048game' })
+  // return new Storage(['sqlite', 'websql', 'indexeddb'], { name: '__2048game' })
+  return new Storage(['sqlite', 'websql', 'indexeddb','localstorage'])
 }

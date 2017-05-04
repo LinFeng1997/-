@@ -3,7 +3,8 @@
  */
 import { Injectable, Component, EventEmitter, Input } from '@angular/core';
 import { AppConfig } from "../app/app.config";
-import { Toast } from 'ionic-native';
+// import { Toast } from 'ionic-native';
+import { Toast } from '@ionic-native/toast';
 import {
     AlertController, Alert, ToastController, NavController, LoadingController, Loading, ModalController, Modal,
     PopoverController, Popover, ActionSheetController, NavParams
@@ -23,7 +24,6 @@ declare let $: any;
  */
 @Injectable()
 export class AbstractComponent {
-
 
     //#region 基本属性
     /**
@@ -68,11 +68,10 @@ export class AbstractComponent {
         protected alertCtrl?: AlertController,
         protected popCtrl?: PopoverController,
         protected actionCtrl?: ActionSheetController,
-        protected navParams?: NavParams) {
-
+        protected navParams?: NavParams,
+        public devToast?: Toast) {
         if (AppConfig.debug)
             console.log(`${cfg.config.logTAG}ctox Abstract Component Provider`);
-
         //参数提取，标题，返回按钮，确定按钮
         if (navParams != null) {
             //
@@ -185,7 +184,7 @@ export class AbstractComponent {
                 if (position === AppConfig.toastParam.position.middle)
                     position = 'center';
 
-                Toast.show(msg, timeout.toString(), position)
+                this.devToast.show(msg, timeout.toString(), position)
                     .subscribe(
                     toast => {
                         if (AppConfig.debug)
@@ -361,7 +360,7 @@ export class AbstractComponent {
     }
 
 
-    showPrompt(title: string, description: string,placeholder:string,callBack: (res: any) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
+    showPrompt(title: string, description: string, placeholder: string, callBack: (res: any) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
         let prompt = this.alertCtrl.create({
             title: title,
             message: description,
@@ -448,86 +447,47 @@ export class AbstractComponent {
      * @param url 链接地址
      */
     openExternalUrl(title: string, url: string): void {
-        let options = {
+        cordova.ThemeableBrowser.open(url, '_blank', {
             statusbar: {
                 color: '#ffffffff'
             },
             toolbar: {
-                height: 50,
-                color: '#3598dc'
+                height: 44,
+                color: '#f0f0f0ff'
             },
             title: {
-                color: '#ffffff',
+                color: '#003264ff',
                 staticText: title,
                 showPageTitle: true
             },
-            // backButton: {
-            // 	image: 'previous',
-            // 	imagePressed: 'previous_pressed',
-            // 	align: 'left',
-            // 	event: 'backPressed'
-            // },
-            // forwardButton: {
-            // 	image: 'forward',
-            // 	imagePressed: 'forward_pressed',
-            // 	align: 'left',
-            // 	event: 'forwardPressed'
-            // },
             closeButton: {
-                image: 'previous',
-                imagePressed: 'previous_pressed',
+                image: 'close',
+                imagePressed: 'close_pressed',
                 align: 'left',
                 event: 'closePressed'
             },
-            // customButtons: [
-            // 	{
-            // 		image: 'share',
-            // 		imagePressed: 'share_pressed',
-            // 		align: 'right',
-            // 		event: 'sharePressed'
-            // 	}
-            // ],
-            // menu: {
-            // 	image: 'menu',
-            // 	imagePressed: 'menu_pressed',
-            // 	title: 'Test',
-            // 	cancel: 'Cancel',
-            // 	align: 'right',
-            // 	items: [
-            // 		{
-            // 			event: 'helloPressed',
-            // 			label: 'Hello World!'
-            // 		},
-            // 		{
-            // 			event: 'testPressed',
-            // 			label: 'Test!'
-            // 		}
-            // 	]
-            // },
+            customButtons: [
+                {
+                    image: 'share',
+                    imagePressed: 'share_pressed',
+                    align: 'right',
+                    event: 'sharePressed'
+                }
+            ],
             backButtonCanClose: true
-        };
-
-        //
-        console.log(url);
-
-        let bro = cordova.ThemeableBrowser.open(url, '_blank', options);
-        let me = this;
-
-        //
-        bro.addEventListener(cordova.ThemeableBrowser.EVT_ERR, function(e) {
-            me.showMessage('打开外部链接出错~');
-            bro.close();
-        });
-
-        //
-        bro.addEventListener(cordova.ThemeableBrowser.EVT_WRN, function(e) {
+        }).addEventListener('backPressed', (e) => {
+            this.showMessage('back pressed');
+        }).addEventListener('helloPressed', (e) => {
+            this.showMessage('hello pressed');
+        }).addEventListener('sharePressed', (e) => {
+            this.showMessage(e.url);
+        }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, (e) => {
+            this.showMessage('打开外部链接出错~');
+        }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, (e) => {
             if (AppConfig.debug)
-                console.log(`${me.cfg.config.logTAG}发现警告信息:${e}`);
+                console.log(`${this.cfg.config.logTAG}发现警告信息:${e}`);
         });
-        // bro.addEventListener('helloPressed', function(e) {
-        // 	me.showMessage('you pressed hello');
-        //     bro.close();
-        // });
+      
     }
 
 

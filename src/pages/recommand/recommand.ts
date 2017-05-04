@@ -75,6 +75,10 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	recommandWechat(){
 		this.showModal(RecommandWechatPage);
 	}
+	//卖舍友
+	msy(){
+		this.openExternalUrl("卖舍友",'http://cn.mikecrm.com/8rWAzIS');
+	}
 	p2p(){
 		//Todo:用户验证
 		this.navCtrl.push("RecommandP2p");

@@ -10,7 +10,8 @@ import { CourseModel } from '../../entities/CourseModel';
 import { UserService } from "../../providers/user.Service";
 import { AbstractService } from "../../interfaces/abstract-service";
 
-//Todo:将选课篮数据加入缓存
+// declare let cordova: any;
+
 @Component({
 	selector: 'page-choose-course',
 	templateUrl: 'choose-course.html'
@@ -102,7 +103,6 @@ export class ChooseCoursePage extends AbstractComponent implements OnInit {
 		this.showAlert("非VIP会员无法享受此功能","此功能暂不开放");
 	}
 	openChooseCourse():any{
-		// console.log("a");
 		this.openExternalUrl("查看课程",'http://202.203.209.96/v5/#/teachClassOverview');
 	}
 	addToCache(value) {

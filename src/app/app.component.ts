@@ -1,7 +1,9 @@
 //组件入口文件
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, IonicApp, ToastController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+// import { StatusBar, Splashscreen } from 'ionic-native';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
@@ -20,7 +22,7 @@ export class MyApp extends AbstractComponent {
   @ViewChild('myNav') nav: Nav;
 
   constructor(public ionicApp: IonicApp, public toastCtrl: ToastController, private platform: Platform, protected cfg: AppConfig, protected appVersion: AppVersion, protected device: Device,
-    private cacheService: AbstractService) {
+    private cacheService: AbstractService, private splash: SplashScreen) {
     //
     super(cfg, null, null, null, null);
     //
@@ -28,7 +30,7 @@ export class MyApp extends AbstractComponent {
 
     platform.ready()
       .then(() => {
-        Splashscreen.hide();
+        splash.hide();
         this.registerBackButtonAction();//注册返回按键事件
         //保存平台名称
         if (platform.is('android'))

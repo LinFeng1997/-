@@ -39,6 +39,10 @@ page-recommand {
     {
         border-bottom: 1px solid #dedede !important;
     }
+    .item-inner{
+        border: none !important;
+
+    }
     .item > ion-icon,
     .item-inner > ion-icon {
         min-height: 0;
