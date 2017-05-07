@@ -24,7 +24,7 @@
     </ion-row>
     <ion-list>
         <button ion-item (click)="chooseCourse()">
-            <ion-icon name="md-list-box" item-left></ion-icon>
+            <ion-icon name="md-list-box" item-left color="primary"></ion-icon>
             <ion-label>选课篮</ion-label>
             <ion-note item-right>查看></ion-note>
         </button>
@@ -47,6 +47,11 @@
             <ion-icon name="md-school" item-left color="xyGreen"></ion-icon>
             <ion-label>期末真题 </ion-label>
             <ion-note item-right>刷题> </ion-note>
+        </button>
+        <button ion-item (click)="clearCache()">
+            <ion-icon name="md-settings" item-left color="dark"></ion-icon>
+            <ion-label>清空缓存 </ion-label>
+            <ion-note item-right> </ion-note>
         </button>
     </ion-list>
     <!-- <ion-input type="text" placeholder="缓存值" [(ngModel)]="testValue" clearInput></ion-input>

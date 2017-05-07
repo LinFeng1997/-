@@ -6,13 +6,32 @@ import { AppConfig } from '../../app/app.config';
 import { TeacherDetailsModel } from '../../entities/TeacherDetailsModel'
 import * as echarts from 'highcharts';
 
-
+declare let moment:any;
 
 @Component({
   selector: 'pie-chart',
   templateUrl: 'pie-chart.html'
 })
 export class PieChartComponent extends AbstractComponent implements OnInit {
+
+  chats = [{
+    imageUrl: 'assets/images/tx3.jpg',
+    title: '软件学院某同学',
+    lastMessage: '老师很好',
+    timestamp: moment().format('LLL')
+  },
+  {
+    imageUrl: 'assets/images/tx4.jpg',
+    title: '新闻学院某同学',
+    lastMessage: '老师非常好',
+    timestamp: moment().format('LLL')
+  }
+    , {
+    imageUrl: 'assets/images/tx5.jpg',
+    title: '物天学院某同学',
+    lastMessage: '挂科是自找的',
+    timestamp: moment().format('LLL')
+  }]
   chart;
   teacherItem:TeacherDetailsModel;
   constructor(public navCtrl: NavController,
@@ -23,6 +42,8 @@ export class PieChartComponent extends AbstractComponent implements OnInit {
     protected cfg: AppConfig
   ) {
     super(cfg, navCtrl, toastCtrl, loadingCtrl);
+    moment.locale('zh-cn');
+    
   }
   ngOnInit() {
     this.teacherItem = this.navParams.get("teacher");

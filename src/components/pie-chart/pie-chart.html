@@ -22,4 +22,17 @@
             </ion-row>
         </ion-card-content>
     </ion-card>
+    <!-- 评论组件要分离出去 -->
+    <ion-list>
+        <ion-list-header>评论区</ion-list-header>
+        <ion-item *ngFor="let chat of chats" (click)="viewMessages(chat)">
+            <ion-avatar item-left>
+                <img [src]="chat.imageUrl">
+            </ion-avatar>
+            <h2>{{chat.title}}</h2>
+            <p>{{chat.lastMessage}}</p>
+            <ion-note item-right>{{chat.timestamp}}</ion-note>
+        </ion-item>
+    </ion-list>
+    <!-- 评论区： 头像+评论 编辑 -->
 </ion-content>

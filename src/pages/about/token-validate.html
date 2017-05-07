@@ -2,7 +2,9 @@
     <button ion-button icon-only clear class="icon-button" navPop>
         <ion-icon name="ios-arrow-dropleft-circle"></ion-icon>
     </button>
-    <ion-input type="text" placeholder="请填写你的邀请码" [(ngModel)]="code" clearInput></ion-input>
+    <ion-item class="marginTop padding0">
+        <ion-input type="text" placeholder="请填写你的邀请码" [(ngModel)]="code"></ion-input>
+    </ion-item>
     <button ion-button full (tap)="submitCode()">确认</button>
     <p text-center>请先进行urp登录再来此页面提交邀请码~~</p>
 </ion-content>

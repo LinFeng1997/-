@@ -113,7 +113,6 @@ export class HomePage extends AbstractComponent implements OnInit {
 	}
 	// 得到饼图
 	getPieChart() {
-		this.showLoading("加载中...");
 		let data = {
 			labels: ["90分以上", "80分-90分", "70分-80分", "60分-70分", "60分以下"],
 			datasets: [
@@ -123,7 +122,6 @@ export class HomePage extends AbstractComponent implements OnInit {
 					hoverBackgroundColor: ["#FFCE56", "#FF6384", "#36A2EB", "#2ED244", "#000"]
 				}]
 		};
-		this.closeLoading();
 		return this.getChart(this.pieCanvas.nativeElement, "pie", data);
 	}
 

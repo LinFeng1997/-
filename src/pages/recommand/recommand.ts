@@ -138,8 +138,15 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 		this.cacheService.deleteCache(key);
 	}
 
-	clearCache(key) {
-		this.cacheService.clearCache();
+	clearCache() {
+		this.confirm('确认信息', '是否确定清空所有缓存？',
+			agree => {
+				if (agree) {
+					this.cacheService.clearCache();
+					this.showMessage("缓存已清空，重新启动APP生效~");
+				}
+			}
+		);
 	}
 
 	simpleAjax() {
