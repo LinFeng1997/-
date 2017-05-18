@@ -29,7 +29,7 @@ export class PieChartComponent extends AbstractComponent implements OnInit {
     , {
     imageUrl: 'assets/images/tx5.jpg',
     title: '物天学院某同学',
-    lastMessage: '挂科是自找的',
+    lastMessage: '挂科真恐怖',
     timestamp: moment().format('LLL')
   }]
   chart;
@@ -66,7 +66,7 @@ export class PieChartComponent extends AbstractComponent implements OnInit {
         plotShadow: false
       },
       title: {
-        text: data.className+" "+data.teacherName+'\n'+"教学班代码:"+data.classId
+        text: data.className+" "+data.teacherName+'\n'+"教学班代码:"+data.classId+"选课人数:"+data.studentCount
       },
       tooltip: {
         headerFormat: '{series.name}<br>',
