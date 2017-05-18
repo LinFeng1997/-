@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, ToastController, ViewController,AlertController } from 'ionic-angular';
-import { NavController, NavParams, InfiniteScroll } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 @Component({

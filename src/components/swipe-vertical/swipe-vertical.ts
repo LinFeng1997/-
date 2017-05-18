@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit, OnDestroy} from '@angular/core'
+import {Directive, ElementRef,OnInit, OnDestroy} from '@angular/core'
 import {Events} from 'ionic-angular';
 import {Gesture} from 'ionic-angular/gestures/gesture'
 declare var Hammer: any

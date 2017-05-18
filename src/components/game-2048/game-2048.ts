@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, Events } from 'ionic-angular';
-import { highlight } from "@ionic/app-scripts/dist/highlight/highlight";
+// import { highlight } from "@ionic/app-scripts/dist/highlight/highlight";
 
 declare let window;
 @Component({

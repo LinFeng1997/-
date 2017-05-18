@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, IonicApp, ToastController } from 'ionic-angular';
 // import { StatusBar, Splashscreen } from 'ionic-native';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+// import { StatusBar } from '@ionic-native/status-bar';
 import { AppVersion } from '@ionic-native/app-version';
 import { Device } from '@ionic-native/device';
 
@@ -54,28 +54,28 @@ export class MyApp extends AbstractComponent {
   /**
      * 获取当前用户
      */
-  private getMyIdentity(cacheKey): void {
-    // var cacheKey = this.cfg.cacheKeys.user;
+  // private getMyIdentity(cacheKey): void {
+  //   // var cacheKey = this.cfg.cacheKeys.user;
 
-    try {
+  //   try {
 
-      //
-      this.cacheService.getCacheAsync(cacheKey)
-        .then(
-        v => {
-          //Todo:保存点什么好呢？
-        }
-        )
-        .catch(
-        er => {
+  //     //
+  //     this.cacheService.getCacheAsync(cacheKey)
+  //       .then(
+  //       v => {
+  //         //Todo:保存点什么好呢？
+  //       }
+  //       )
+  //       .catch(
+  //       er => {
 
-        }
-        );
-    }
-    catch (err) {
-      console.log(`TicketPassenger: cache key:${cacheKey} get fail: ${err.message}`);
-    }
-  }
+  //       }
+  //       );
+  //   }
+  //   catch (err) {
+  //     console.log(`TicketPassenger: cache key:${cacheKey} get fail: ${err.message}`);
+  //   }
+  // }
 
   registerBackButtonAction() {
     this.platform.registerBackButtonAction(() => {

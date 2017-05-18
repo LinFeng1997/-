@@ -3,7 +3,7 @@
  */
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController } from 'ionic-angular';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { UserService } from "../../providers/user.Service";
 import { UserInfor } from "../../entities/UserInfor";
 import { CourseData } from "../../entities/CourseData";

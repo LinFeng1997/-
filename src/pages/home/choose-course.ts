@@ -2,8 +2,8 @@
  * Created by Blow on 2017-04-05.
  */
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, ToastController, AlertController, PopoverController, Popover } from 'ionic-angular';
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController, LoadingController, ToastController, AlertController, PopoverController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import { CourseModel } from '../../entities/CourseModel';

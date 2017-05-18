@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs";
 import { AbstractService } from "../interfaces/abstract-service";
-import { UserInfor } from "../entities/UserInfor";
+// import { UserInfor } from "../entities/UserInfor";
 import { AbstractDataService } from "../interfaces/abstract.data.service";
 import { AppConfig } from "../app/app.config";
 /*
