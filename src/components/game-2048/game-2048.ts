@@ -22,7 +22,7 @@ export class Game2048Component {
     public storage: Storage,
   ) {
     this.audio = new Audio();
-    this.audio.src = "../assets/901.wav";
+    this.audio.src = "./assets/901.wav";
     this.audio.load();
     this.findHistory();
   }

@@ -22,23 +22,17 @@ import { ActionLinks } from './app.routes.module';
 //自定义指令,以后多了是要抽象的
 import { CounterDirective } from '../directives/counter.directive';
 
-//游戏需要的存储/组件
-import { Storage } from '@ionic/storage';
-import { SwipeVertical } from '../components/swipe-vertical/swipe-vertical';
+
 
 import './rxjs.extensions';
 
 
 @NgModule({
-  declarations: [ AppComponents,CounterDirective,SwipeVertical ],
+  declarations: [ AppComponents,CounterDirective ],
   imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule,RecommandModule,AboutModule,HomeModule],
   bootstrap: [IonicApp],
   entryComponents: [ AppComponents ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{ provide: Storage, useFactory: provideStorage }]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
 
-export function provideStorage() {
-  // return new Storage(['sqlite', 'websql', 'indexeddb'], { name: '__2048game' })
-  return new Storage(['sqlite', 'websql', 'indexeddb','localstorage'])
-}
