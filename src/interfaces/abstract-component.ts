@@ -457,23 +457,15 @@ export class AbstractComponent {
             },
             title: {
                 color: '#003264ff',
-                staticText: title,
                 showPageTitle: true
             },
             closeButton: {
-                image: 'close',
-                imagePressed: 'close_pressed',
+                wwwimage: './assets/images/logo.png',
+                wwwimagePressed: 'close_pressed',
+                wwwImageDensity: 2,
                 align: 'left',
                 event: 'closePressed'
             },
-            customButtons: [
-                {
-                    image: 'share',
-                    imagePressed: 'share_pressed',
-                    align: 'right',
-                    event: 'sharePressed'
-                }
-            ],
             backButtonCanClose: true
         }).addEventListener('backPressed', (e) => {
             this.showMessage('back pressed');
@@ -482,7 +474,8 @@ export class AbstractComponent {
         }).addEventListener('sharePressed', (e) => {
             this.showMessage(e.url);
         }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, (e) => {
-            this.showMessage('打开外部链接出错~');
+            this.showMessage(JSON.stringify(e),null,100000);
+            // this.showMessage('打开外部链接出错~');
         }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, (e) => {
             if (AppConfig.debug)
                 console.log(`${this.cfg.config.logTAG}发现警告信息:${e}`);

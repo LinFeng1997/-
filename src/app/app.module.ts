@@ -10,8 +10,14 @@ import { AppConfig } from './app.config';
 import { CoreModule } from './app.core.module';
 // 组件
 import { AppComponents } from './app.component.module';
+import { RecommandModule} from './../pages/recommand/recommand.module';
+import { AboutModule} from './../pages/about/about.module';
+import { HomeModule} from './../pages/home/home.module';
+
 // deeplink
 import { ActionLinks } from './app.routes.module';
+
+
 
 //自定义指令,以后多了是要抽象的
 import { CounterDirective } from '../directives/counter.directive';
@@ -25,7 +31,7 @@ import './rxjs.extensions';
 
 @NgModule({
   declarations: [ AppComponents,CounterDirective,SwipeVertical ],
-  imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule],
+  imports: [ IonicModule.forRoot(MyApp, AppConfig.ionicConfig, { links:ActionLinks }), CoreModule,RecommandModule,AboutModule,HomeModule],
   bootstrap: [IonicApp],
   entryComponents: [ AppComponents ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},{ provide: Storage, useFactory: provideStorage }]

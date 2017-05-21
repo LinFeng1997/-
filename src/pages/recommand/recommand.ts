@@ -9,7 +9,8 @@ import { AppConfig } from '../../app/app.config';
 import { AbstractService } from "../../interfaces/abstract-service";
 import { InfoService } from "../../providers/info.Service";
 import { Game2048Component } from "../../components/game-2048/game-2048";
-import { RecommandWechatPage } from '../../pages/recommand/recommand-wechat'
+import { RecommandWechatPage } from './recommand-wechat';
+import { RecommandList } from './recommand-list';
 
 declare let window: any;
 @Component({
@@ -85,6 +86,9 @@ export class RecommandPage extends AbstractComponent implements OnInit {
 	}
 	playGame2048(){
 		this.showModal(Game2048Component);
+	}
+	chat(){
+		this.navCtrl.push(RecommandList);
 	}
 	// 根据不同情况增加缓存，课程那个可能是个数组，一直push啊push啊
 	addToCache(value) {

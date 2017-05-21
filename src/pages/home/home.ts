@@ -200,7 +200,7 @@ export class HomePage extends AbstractComponent implements OnInit {
 
 	calEveryAvg(o): any {
 		let g = 0, z = 0 , j = 0;
-		console.log(o);
+		// console.log(o);
 		_.forEach(o, (value) => {
 			this.jAvg += parseInt(value.result)*parseInt(value.credit);
 			j+=parseInt(value.credit);
