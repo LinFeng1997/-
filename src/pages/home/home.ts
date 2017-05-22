@@ -1,13 +1,12 @@
 /**
  * Created by Blow on 2017-03-06.
  */
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { UserService } from "../../providers/user.Service";
 import { UserInfor } from "../../entities/UserInfor";
 import { CourseData } from "../../entities/CourseData";
-// import { UrpInfo } from "../../Entities/UrpInfo";
 import { AbstractComponent } from "../../interfaces/abstract-component";
 import { AppConfig } from '../../app/app.config';
 import Chart from 'chart.js';
@@ -31,6 +30,10 @@ export class HomePage extends AbstractComponent implements OnInit {
 	courseData: Array<CourseData>;
 	// 临时存放课程的，用于过滤
 	tmpCourseData: Array<CourseData>;
+	// 学期集合
+	semesterArr: Array<string>;
+	// 当前选择学期
+	curSemester: string = "全部";
 	// 平均成绩
 	avgGrade: number = 0;
 	// 公共平均分
@@ -106,7 +109,8 @@ export class HomePage extends AbstractComponent implements OnInit {
 		let val = ev.target.value;
 		if (val && val.trim() !== '') {
 			this.courseData = this.courseData.filter((e) => {
-				return e.courseName.includes(val);
+				// console.info(e.semesterId,this.curSemester);
+				return (e.semesterId === this.curSemester || this.curSemester==='全部') && e.courseName.includes(val);
 			})
 
 		}
@@ -125,13 +129,7 @@ export class HomePage extends AbstractComponent implements OnInit {
 		return this.getChart(this.pieCanvas.nativeElement, "pie", data);
 	}
 
-	getChart(context, chartType, data, options?) {
-		return new Chart(context, {
-			type: chartType,
-			data: data,
-			options: options
-		});
-	}
+
 	// 处理数据函数
 	handleAjax(grade): any {
 		let cds = new Array<CourseData>();
@@ -149,9 +147,9 @@ export class HomePage extends AbstractComponent implements OnInit {
 			cd.semesterId = value.SemesterId.replace(/(\d{4})[\d]/gi,
 				(match) => {
 					if (match.substring(4) == 1)
-						return match.substring(0, 4) + "秋季学";
+						return match.substring(0, 4) + "秋季学期";
 					else if (match.substring(4) == 2)
-						return match.substring(0, 4) + "春季学";
+						return match.substring(0, 4) + "春季学期";
 					else return match;
 				}
 			);;
@@ -167,6 +165,7 @@ export class HomePage extends AbstractComponent implements OnInit {
 		return cds;
 	}
 	handleGrade(): any {
+		this.avgGrade = 0;
 		let excellent: number = 0, good: number = 0, common: number = 0, notBad: number = 0, bad: number = 0;
 		_.forEach(this.courseData, (e) => {
 			let temp = parseInt(e.result);
@@ -199,21 +198,24 @@ export class HomePage extends AbstractComponent implements OnInit {
 	}
 
 	calEveryAvg(o): any {
-		let g = 0, z = 0 , j = 0;
+		let g = 0, z = 0, j = 0;
+		this.jAvg = this.gAvg = this.zAvg = 0;
 		// console.log(o);
+		// debugger;
 		_.forEach(o, (value) => {
-			this.jAvg += parseInt(value.result)*parseInt(value.credit);
-			j+=parseInt(value.credit);
+			this.jAvg += parseFloat(value.result) * parseFloat(value.credit);
+			j += parseFloat(value.credit);
 			switch (value.courseNature) {
 				case "学科基础":
 				case "专业必修":
 				case "专业选修":
-					this.zAvg += parseInt(value.result);
+				case "院管选修":
+					this.zAvg += parseFloat(value.result);
 					z++;
 					break;
 				case "素质选修":
 				case "公共必修":
-					this.gAvg += parseInt(value.result);
+					this.gAvg += parseFloat(value.result);
 					g++;
 					break;
 				default:
@@ -227,10 +229,39 @@ export class HomePage extends AbstractComponent implements OnInit {
 		// console.log(this.jAvg);
 	}
 
-	goToChooseCourse(){
+	goToChooseCourse() {
 		this.navCtrl.push('ChooseCourse');
 	}
 
+	selectSemester(): any {
+		if (!this.semesterArr) {
+			this.semesterArr = this.getSemesterArr();
+		}
+		this.showRadio('请选择学期', ['全部', ...this.semesterArr], data => this.filterSemester(data));
+	}
+
+	getSemesterArr() {
+		let arr = this.tmpCourseData.map(e => {
+			return e.semesterId;
+		}).filter((e, index, arr) => {
+			return arr.indexOf(e) === index;
+		});
+		return arr;
+	}
+
+	filterSemester(s): any {
+		this.curSemester = s;
+		if (s === '全部') {
+			this.courseData = this.tmpCourseData;
+		}
+		else {
+			this.courseData = this.tmpCourseData.filter((e) => {
+				return e.semesterId === s;
+			});
+		}
+		this.calEveryAvg(this.courseData);
+		this.pieChart = this.getPieChart();
+	}
 }
 
 

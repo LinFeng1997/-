@@ -9,6 +9,7 @@ import {
     AlertController, Alert, ToastController, NavController, LoadingController, Loading, ModalController, Modal,
     PopoverController, Popover, ActionSheetController, NavParams
 } from "ionic-angular";
+import Chart from 'chart.js';
 
 declare let cordova: any;
 
@@ -391,6 +392,40 @@ export class AbstractComponent {
         return prompt;
 
     }
+    /**
+   * 显示单选提示框
+   * @param title 标题
+   * @param radioArray 单选内容数组
+   * @param callBack 回调函数
+   * @param okBtnText 确认按钮文字，默认确定
+   * @param cancelBtnText 取消按钮文字，默认取消
+   */
+    showRadio(title: string, radioArray: Array<string>, callBack?: (res: any) => void, okBtnText: string = '确定', cancelBtnText: string = '取消'): Alert {
+        let alert = this.alertCtrl.create();
+        alert.setTitle(title);
+        if (!Array.isArray(radioArray)) {
+            console.info(`${radioArray}不是一个有效的数组`);
+            return;
+        }
+        radioArray.forEach(e => {
+            alert.addInput({
+                type: 'radio',
+                label: e,
+                value: e,
+                checked: false
+            });
+        })
+        alert.addButton('取消');
+        alert.addButton({
+            text: '确认',
+            handler: data => {
+                callBack(data);
+            }
+        });
+        alert.present();
+
+        return alert;
+    }
     //#endregion
 
     //#region 视图辅助
@@ -434,7 +469,7 @@ export class AbstractComponent {
         //
         $(`#${elementId}`).removeClass()
             .addClass(`animated ${action}`)
-            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(this).removeClass();
             });
     }
@@ -474,13 +509,13 @@ export class AbstractComponent {
         }).addEventListener('sharePressed', (e) => {
             this.showMessage(e.url);
         }).addEventListener(cordova.ThemeableBrowser.EVT_ERR, (e) => {
-            this.showMessage(JSON.stringify(e),null,100000);
+            this.showMessage(JSON.stringify(e), null, 100000);
             // this.showMessage('打开外部链接出错~');
         }).addEventListener(cordova.ThemeableBrowser.EVT_WRN, (e) => {
             if (AppConfig.debug)
                 console.log(`${this.cfg.config.logTAG}发现警告信息:${e}`);
         });
-      
+
     }
 
 
@@ -515,5 +550,11 @@ export class AbstractComponent {
 
     //#endregion
 
-
+    getChart(context, chartType, data, options?) {
+        return new Chart(context, {
+            type: chartType,
+            data: data,
+            options: options
+        });
+    }
 }

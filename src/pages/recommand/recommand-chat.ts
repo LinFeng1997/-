@@ -126,7 +126,7 @@ export class RecommandChat extends AbstractComponent implements OnInit {
 						userId: this.toUser._id,
 						username: this.toUser.username,
 						pic: this.toUser.pic,
-						text: "Just a quick reply"
+						text: "此功能还在开发中噢~"
 					}
 				this.messages.push(replyData);
 				this.scrollToBottom();

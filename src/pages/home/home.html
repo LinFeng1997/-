@@ -8,8 +8,11 @@
     </ion-header> -->
     <ion-content style="background-image': 'url(./assets/images/background-1.jpg)'">
         <h4 text-center color="dark">
-        {{info['Name']}} <!-- <button ion-button clear (click)="loginState=false">注销</button> -->
+        {{info['Name']}} 
         </h4>
+        <h5 text-center color="primary" (tap)="selectSemester()">
+        当前学期:{{curSemester}} <ion-icon name="ios-arrow-down" ></ion-icon>
+        </h5>
         <ion-fab right top>
             <button ion-fab color="danger" (click)="loginOut()">
                 <ion-icon name="ios-log-out"></ion-icon>
@@ -47,7 +50,7 @@
             <ion-card-content>
                 <ion-card-title text-center>
                     <h3>课程名：{{item.courseName}}</h3>
-                    <h4>学期:{{item.semesterId}}期{{item.courseNature}}</h4>
+                    <h4>学期:{{item.semesterId}}{{item.courseNature}}</h4>
                 </ion-card-title>
                 <ion-row text-center>
                     <ion-col width-33>

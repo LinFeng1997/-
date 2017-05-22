@@ -9,7 +9,7 @@ import { RecommandList } from './recommand-list';
 import { Game2048Component } from './../../components/game-2048/game-2048';
 //游戏需要的存储/组件
 import { Storage } from '@ionic/storage';
-import { SwipeVertical } from '../components/swipe-vertical/swipe-vertical';
+import { SwipeVertical } from './../../components/swipe-vertical/swipe-vertical';
 
 @NgModule({
   declarations: [
