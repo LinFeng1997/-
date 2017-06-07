@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>成绩有毒下载</title>
+    <style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+        font-size: 14px;
+    }
+    
+    .content {
+        height: 90%;
+        overflow: auto;
+    }
+    
+    .logo {
+        background-image: url(/bg.png);
+        height: 130px;
+        padding-top: 20px;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .logo > div {
+        font-size: 16px;
+    }
+    
+    .image-display > img {
+        float: left;
+        display: block;
+        width: 145px;
+        height: 240px;
+        margin-left: 10px;
+    }
+    
+    .picture-Preview {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+    
+    .image-display {
+        width: 800px;
+        overflow: auto;
+        padding: 5px 0;
+    }
+    
+    .image-display:after {
+        clear: both;
+        content: ' ';
+        display: block;
+    }
+    
+    .attribute {
+        padding: 10px 16px;
+        border-bottom: 1px solid gainsboro;
+    }
+    
+    .introduction {
+        padding: 10px 16px;
+    }
+    
+    .footer {
+        height: 10%;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+    }
+    
+    .footer button {
+        font-size: 16px;
+        background: #0084ff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        margin-top: 10px;
+        min-width: 240px;
+    }
+    
+    #weiXin {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.8);
+        filter: alpha(opacity=80);
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        text-align: center;
+        padding-top: 10px;
+        display: none;
+    }
+    
+    #weiXin > img {
+        width: 95%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="logo">
+            <img src="https://o1wh05aeh.qnssl.com/image/view/app_icons/295dc62df89694b9bf5a4eb47dd2ce7a/120" alt="">
+            <div>成绩有毒</div>
+        </div>
+        <div class="picture-Preview">
+            <div class="image-display">
+                <img src="https://o1whyeemo.qnssl.com/image/view/app_screenshots/7f7791e3839900dd8a2606660b8573f6/528" alt="">
+                <img src="https://o1whyeemo.qnssl.com/image/view/app_screenshots/fb175ebafba8c6d374a263576278eddf/528" alt="">
+                <img src="https://o1whyeemo.qnssl.com/image/view/app_screenshots/01faca32e3c1f22f02416cfb6d1a3ead/528" alt="">
+                <img src="https://o1whyeemo.qnssl.com/image/view/app_screenshots/e1d9a514ffa3bcc773885700fdfab1a2/528" alt="">
+                <img src="https://o1whyeemo.qnssl.com/image/view/app_screenshots/361a4b34726fa8509618b03428b30943/528" alt="">
+               <!--  <img src="/5.png" alt=""> -->
+            </div>
+        </div>
+        <div class="attribute">
+            <div>资费：免费</div>
+            <div>大小：4.8M</div>
+            <div>版本：0.9</div>
+            <div>开发：云南大学软件学院</div>
+        </div>
+        <div class="introduction">
+            <h3>应用介绍</h3>
+            <div> 一款助力大学生选课和学习的APP</div>
+        </div>
+        <div class="introduction">
+            <h3>功能概览</h3>
+            <div>1.登录云南大学URP查看自己往年成绩</div>
+            <div>2.查看自己往年成绩的统计值，包括加权平均分等</div>
+            <div>3.一键评估(需登录urp)</div>
+            <div>4.半自动选课(需登录urp)</div>
+            <div>5.查看云南大学课程表(需登录urp)</div>
+            <div>6.查看某门课或老师的往年给分情况(需登录urp和使用邀请码)</div>
+            <div>7.根据推荐算法得到下学期可能适合选的课程(需登录urp和使用邀请码)</div>
+            <div>8.根据推荐算法得到适合一起学习的异性CP信息(需登录urp和使用邀请码)</div>
+            <div>9.2048小游戏</div>
+            <h3>开发中的功能：</h3>
+            <div>
+                10.和自己的CP即时通讯
+            </div>
+            <div> 11.一键选课
+            </div>
+            <div>12.在线刷期末考试往年真题</div>
+        </div>
+    </div>
+    <div class="footer">
+        <button onclick='download()' id="download">立 即 安 装</button>
+    </div>
+    <div id="weiXin">
+        <p>点击右上角按钮,选择在浏览器打开</p>
+        <img src="/live_weixin.png" alt="点击右上角按钮,选择在浏览器打开">
+    </div>
+    <script>
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        document.getElementById('weiXin').style.display = 'block';
+    }
+
+    function download() {
+        var download = document.getElementById('download');
+        download.innerHTML = '准 备 下 载 中...';
+        var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        if (isiOS) {
+            window.location.href = "itms-services://?action=download-manifest&url=https://github.com/LinFengYnu/-/blob/master/app.plist";
+            setTimeout(function() {
+                download.innerHTML = '点击安装后,请按Home键在桌面查看';
+            }, 4000);
+        } else {
+            window.location.href = "http://139.199.59.47:8000/downloadAndroid";
+            setTimeout(function() {
+                download.innerHTML = '立 即 安 装';
+            }, 4000);
+        }
+    }
+    </script>
+</body>
+
+</html>
