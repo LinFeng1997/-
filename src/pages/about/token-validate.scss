@@ -1,0 +1,35 @@
+page-token-validate {
+    .icon-button {
+        position: absolute;
+        top: 50px;
+        // left: 10px;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0);
+        color: rgba(0, 0, 0, 0.4);
+        ion-icon {
+            font-size: 3.5rem;
+            padding: 0;
+            // margin-left: 20px;
+            overflow: visible;
+        }
+    }
+    .marginTop{
+        margin-top: 60% !important;
+    }
+    // 表单输入框
+    // ion-item {
+    //     border-radius: 3px !important;
+    //     padding-left: 10px !important;
+    //     margin-bottom: 15px !important;
+    //     color: #fff !important;
+    //     background-color: rgba(255, 255, 255, .2) !important;
+    //     font-size: 0.9em;
+    // }
+    // ::-webkit-input-placeholder {
+    //     color: white !important;
+    // }
+    // .item-inner {
+    //     border-bottom: 0 !important;
+    //     box-shadow: none !important;
+    // }
+}

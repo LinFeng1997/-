@@ -1,0 +1,44 @@
+<ion-content>
+    <button ion-button icon-only clear class="icon-button" navPop>
+        <ion-icon name="ios-arrow-dropleft-circle"></ion-icon>
+    </button>
+    <div id="chart" style="min-width: 310px; height: 480px; margin: 0 auto">
+    </div>
+    <ion-card class="gradeCard">
+        <ion-card-content>
+            <ion-row text-center>
+                <ion-col width-33>
+                    <ion-label>最高:</ion-label>
+                    <h4>{{teacherItem.max}}分</h4>
+                </ion-col>
+                <ion-col width-33>
+                    <ion-label>最低：</ion-label>
+                    <h4>{{teacherItem.min}}分</h4>
+                </ion-col>
+                <ion-col width-33>
+                    <ion-label>方差：</ion-label>
+                    <h4>{{teacherItem.dif}} </h4>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <!-- 评论组件要分离出去 -->
+    <ion-list>
+        <ion-list-header>评论区</ion-list-header>
+        <ion-item *ngFor="let chat of chats" (click)="viewMessages(chat)">
+            <ion-avatar item-left>
+                <img [src]="chat.imageUrl">
+            </ion-avatar>
+            <h2>某同学</h2>
+            <p>{{chat.cBody}}</p>
+            <ion-note item-right>{{chat.cTime| date:"shortDate"}} {{chat.cTime| date:"mediumTime"}}</ion-note>
+        </ion-item>
+    </ion-list>
+    <ion-item>
+        <ion-textarea max=100 placeholder="输入你的评论(最多50字)" [(ngModel)]="comment"></ion-textarea>
+    </ion-item>
+    <section padding>
+        <button ion-button full (tap)="submitComment()">提交评论</button>
+    </section>
+    <!-- 评论区： 头像+评论 编辑 -->
+</ion-content>

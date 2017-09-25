@@ -1,0 +1,62 @@
+page-home {
+    // 进度条样式
+    .progress-outer {
+        width: 96%;
+        margin: 10px 2%;
+        padding: 3px;
+        text-align: center;
+        background-color: #f4f4f4;
+        border: 1px solid #dcdcdc;
+        color: #fff;
+        border-radius: 20px;
+    }
+    .red {
+        background-color: red !important;
+    }
+    .myYellow{
+        background-color: rgba(241, 175, 28, 0.73) !important;
+    }
+    .cornflowerblue {
+        background-color: cornflowerblue !important;
+    }
+    ion-card:last-child {
+        margin-bottom: 50px;
+    }
+    // 卡片样式
+    .gradeCard {
+        box-shadow: 6px 6px 6px 0.1vmax rgba(0, 0, 0, 0.5);
+        border-bottom: 3px inset;
+        border-radius: 12px;
+        background-color: aliceblue;
+        ion-card-title {
+            h3 {
+                padding: .5em 0;
+                padding-top: 0;
+                font-size: 2rem;
+                font-weight: 800;
+            }
+            h4 {
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+        }
+        ion-row {
+            ion-label {
+                margin-left: 13px;
+                margin-right: 0;
+                width: 100%;
+                color: #B3B1B2;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 13.8px;
+            }
+            h4 {
+                font-size: 26px;
+                color: #5E5E5E;
+                padding: .18em 0;
+                display: inline-block;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>本学期成绩</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ng-container *ngFor="let i = index;let item of grade;">
+    <ion-card class="gradeCard" *ngIf="item['总成绩']">
+      <ion-card-content>
+        <ion-card-title text-center>
+          <h3>课程名：{{item['课程名称']}}</h3>
+          <h4>讲授课教师姓名:{{item['讲授课教师姓名']}}</h4>
+        </ion-card-title>
+        <ion-row text-center>
+          <ion-col width-25>
+            <ion-label>总:</ion-label>
+            <h4>{{item['总成绩']}}分</h4>
+          </ion-col>
+          <ion-col width-25>
+            <ion-label>平时：</ion-label>
+            <h4>{{item['平时成绩']||'未登'}}分</h4>
+          </ion-col>
+          <ion-col width-25>
+            <ion-label>期中：</ion-label>
+            <h4>{{item['期中成绩']||'未登'}}分 </h4>
+          </ion-col>
+          <ion-col width-25>
+            <ion-label>期末：</ion-label>
+            <h4>{{item['期末成绩']||'未登'}}分 </h4>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>

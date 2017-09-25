@@ -1,0 +1,54 @@
+pie-chart {
+	.icon-button {
+        position: absolute;
+        top: 50px;
+        // left: 10px;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0);
+        color: rgba(0,0,0,0.4);
+        ion-icon{
+            font-size: 3.5rem;
+            padding: 0;
+            margin-left: 20px;
+            overflow: visible;
+        }
+    }
+	.highcharts-credits{
+		display: none;
+	}
+
+    .gradeCard {
+        box-shadow: 6px 6px 6px 0.1vmax rgba(0, 0, 0, 0.5);
+        border-bottom: 3px inset;
+        border-radius: 12px;
+        background-color: aliceblue;
+        ion-row {
+            ion-label {
+                margin-left: 13px;
+                margin-right: 0;
+                width: 100%;
+                color: #B3B1B2;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 13.8px;
+            }
+            h4 {
+                font-size: 26px;
+                color: #5E5E5E;
+                padding: .18em 0;
+                display: inline-block;
+            }
+        }
+    }
+
+    //评论区样式
+    ion-note {
+        font-size: 12px;
+        align-self: flex-start;
+        margin-top: 14px;
+    }
+
+    ion-label{
+        white-space:normal !important;
+    }
+}

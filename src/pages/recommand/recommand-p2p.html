@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>男女搭配，干活不累</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item  *ngFor="let item of recommandPerson;trackBy:trackByPerson" (tap)="chat(item)">
+      <ion-avatar item-left>
+        <img src="./assets/images/logo.png">
+      </ion-avatar>
+      <h2 class="margin0">{{item['所在学院']}}</h2>
+      <p> {{item['姓名']}}<ion-icon name="ios-chatbubbles-outline" item-right></ion-icon></p>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="80px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

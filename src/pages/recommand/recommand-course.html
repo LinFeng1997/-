@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>下学期选课推荐</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item *ngFor="let item of recommendCourse">
+    {{item['课程名称']}}
+    {{item['讲授课教师姓名']}}老师
+  </ion-item>
+</ion-content>

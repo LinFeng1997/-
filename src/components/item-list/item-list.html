@@ -1,0 +1,24 @@
+<ion-header>
+    <!-- 绑定 -->
+    <ion-navbar>
+        <ion-searchbar *ngIf="!param.isIos" placeholder="搜索{{listType}}" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+        <ng-container *ngIf="param.isIos">
+            <ion-item>
+                <ion-label>搜索{{listType}}</ion-label>
+                <ion-input [(ngModel)]="tmpSearch"></ion-input>
+            </ion-item>
+            <ion-fab right top>
+                <button ion-fab color="secondary" (tap)="filter()">
+                    确认
+                </button>
+            </ion-fab>
+        </ng-container>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <button ion-item (click)="selectItem(item)" *ngFor="let item of itemList">{{item}}</button>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="80px">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多中...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

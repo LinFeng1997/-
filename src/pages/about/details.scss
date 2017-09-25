@@ -1,0 +1,25 @@
+page-details {
+    .gradeCard {
+        box-shadow: 6px 6px 6px 0.1vmax rgba(0, 0, 0, 0.5);
+        border-bottom: 3px inset;
+        border-radius: 12px;
+        background-color: aliceblue;
+        ion-card-title {
+            h3 {
+                padding: .5em 0;
+                padding-top: 0;
+                font-size: 2rem;
+                font-weight: 800;
+            }
+            h4 {
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+        }
+        .progress-inner{
+            margin: 0 auto;
+        	background-color:rgba(56, 126, 245, 0.78);
+        	color: white;
+        }
+    }
+}

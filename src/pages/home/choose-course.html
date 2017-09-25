@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title text-center>选课！</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ng-container *ngIf="validateArr.length<1">
+        <ion-fab right top>
+            <button ion-fab color="dark" (click)="clearCourseItem()">
+                <ion-icon name="md-trash"></ion-icon>
+            </button>
+        </ion-fab>
+        <ion-fab right bottom *ngIf="!isIos">
+            <button ion-fab (tap)="openChooseCourse()">
+                <ion-icon name="ios-apps"></ion-icon>
+            </button>
+        </ion-fab>
+        <ion-card>
+
+            <ion-card-content>
+                <ion-list>
+                    <ion-list-header text-center>
+                        我的选课篮
+                    </ion-list-header>
+                    <ion-item class="marginTop padding0">
+                        <ion-input type="text" value="" placeholder="在这里输入10位选课代码" clear #todoText></ion-input>
+                    </ion-item>
+                    <button ion-button (click)="addItem(todoText.value)" full>
+                添加选课代码
+            </button>
+                </ion-list>
+            </ion-card-content>
+
+
+            <ion-row padding>
+                <ion-col width-50>
+                    课程代码
+                </ion-col>
+                <ion-col width-25>
+                    选一门
+                </ion-col>
+                <ion-col width-25>
+                    删除
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let item of getToChooseCourse();let i =index " class="align-item-center" padding>
+                <ion-col width-50>
+                    <!-- {{i + 1}} -->{{item.courseNumber}}
+                </ion-col>
+                <ion-col width-25>
+                    <!-- 按钮颜色可能要随机获取哦~ -->
+                    <button ion-button (click)="getValidate(item.courseNumber)" icon-only clear class="top17">
+                    <ion-icon name="ios-add-circle"></ion-icon>
+                </button>
+                </ion-col>
+                <ion-col width-25 class="toggle">
+                    <!-- <ion-radio [(ngModel)]="item.done"></ion-radio> -->
+                    <!-- <ion-toggle [(ngModel)]="item.done" checked="false"></ion-toggle> -->
+                    <input type="checkbox" [(ngModel)]="item.done" />
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <ion-card *ngIf="evaluationShow" padding>
+            <button ion-button (tap)="evaluationIsShow()" color="danger" outline>隐藏评估 </button>
+            <ion-input type="text" [(ngModel)]="comment" placeholder="在这里输入评论语" clear min=2></ion-input>
+            <button ion-button (click)="fasterEvaluation()" full>
+                一键评估
+            </button>
+        </ion-card>
+    </ng-container>
+    <!--单门选课-->
+    <ng-container *ngIf="validate&&validateArr.length<1">
+        <ion-title text-center>课程代码为{{courseId}}的验证码：</ion-title>
+        <img src="http://202.203.209.96/vimgs/{{validate}}.png" alt="" *ngIf="validate" class="width100" (click)="getValidate(courseId)">
+        <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCode"></ion-input>
+        <button ion-button (click)="chooseSingleCourse(courseId)" full>
+            确认选择
+        </button>
+        <button ion-button (click)="chooseMutCourse(model)" full color="danger">
+            批量选课模式
+        </button>
+    </ng-container>
+    <!--多门选课-->
+    <ng-container *ngIf="validateArr.length>0">
+        <section *ngFor="let c of model;let i = index; ">
+            <ion-title text-center>课程代码为{{c.courseNumber}}的验证码：</ion-title>
+            <img src="http://202.203.209.96/vimgs/{{validateArr[i]}}.png" alt="" *ngIf="validateArr[i]" class="width100" (click)="getValidate2(i,c.courseNumber)">
+            <ion-input type="text" value="" placeholder="验证码" [(ngModel)]="validateCodeArr[i]"></ion-input>
+            <button ion-button (click)="chooseSingleCourse2(c,i)" full>
+                确认选这门课
+            </button>
+        </section>
+    </ng-container>
+</ion-content>
